@@ -187,16 +187,17 @@ export default tseslint.config(
 https://prettier.io/docs/en/install
 ```
 
-    1. and install
-    ```
-    npm install --save-dev --save-exact prettier
-    ```
+1. and install
+
+   ```
+   npm install --save-dev --save-exact prettier
+   ```
 
 2. run tis command for creating .prettierrc file
 
-```
-node --eval "fs.writeFileSync('.prettierrc','{}\n')"
-```
+   ```
+   node --eval "fs.writeFileSync('.prettierrc','{}\n')"
+   ```
 
 .. and paste it
 
