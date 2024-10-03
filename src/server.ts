@@ -1,12 +1,15 @@
-import express, { Request, Response } from "express";
+import { app } from "./app";
+import ConnectDB from "./db/ConnectDB";
+import { config } from "./config/env.config";
 
-const app = express();
-const port = 3000;
-
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+ConnectDB()
+  .then(() => {
+    app.listen(config.port, () => {
+      console.log(
+        `\n Application is running on port: http:localhost://${config.port}`
+      );
+    });
+  })
+  .catch((error) => {
+    console.log("MongoDB Connectin Failed!!", error.message);
+  });
