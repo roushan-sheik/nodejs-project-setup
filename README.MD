@@ -1,47 +1,47 @@
 # Node Js Project Setup
 
-### 1. initialization
+## 1. initialization
 
 ```
  npm init
 ```
 
-### set entry point
+### Set entry point
 
 ```
 ./dist/server.ts
 ```
 
-### 2. go to express docs and install
+## 2. go to express docs and install
 
 ```
     npm i express
 ```
 
-### 3. go to type script docs and install
+## 3. go to type script docs and install
 
 ```
 npm i typescript --save-dev
 ```
 
-### 4. install those packeges
+## 4. install those packeges
 
 ```
  npm i cors dot env mongoose
 
 ```
 
-### 5. create a
+## 5. create a
 
 ```
 .gitignore file
 ```
 
-### 6. go to this website and copy the ignore code
+## 6. go to this website and copy the ignore code
 
 🔗 Links: https://mrkandreev.name/snippets/gitignore-generator/#Node
 
-### 7. create this files and folders
+## 7. create this files and folders
 
 ```
 └─ .
@@ -55,13 +55,22 @@ npm i typescript --save-dev
 
 ```
 
-### 8. initialize typecript > tsc --init > set >>> rootDir: "./src" & outDir:"./dist"
+## 8. initialize typecript
 
-### 9. go to express for hello world setup
+```
+tsc --init
+```
+
+```
+  //rootDir: "./src",
+  //outDir: "./dist"
+```
+
+## 9. go to express for hello world setup
 
 🔗 Links: https://expressjs.com/en/starter/hello-world.html
 
-### 10. use common js import syntax
+## 10. use common js import syntax
 
 ```
     npm i --save-dev @types/express
@@ -69,7 +78,7 @@ npm i typescript --save-dev
 
 <===============|| run the project || ===============>
 
-### 11. run the project
+## 11. run the project
 
 #> basic way
 
@@ -93,7 +102,7 @@ npm i typescript --save-dev
 
 <===============|| Another final solution for run the project || ===============>
 
-### 12. run the project wit ts-node-dev
+## 12. run the project wit ts-node-dev
 
 🔗 Links https://www.npmjs.com/package/ts-node-dev
 
@@ -109,20 +118,20 @@ npm i typescript --save-dev
    ts-node-dev --respawn --transpile-only ./src/server.ts
    ```
 
-### 13. write a script for this big command inside your packege.json file
+## 13. write a script for this big command inside your packege.json file
 
 ```
 "start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts"
 
 ```
 
-i. production code run command
+### Production code run command
 
 ```
 "start:prod": "nodemon ./dist/server.js"
 ```
 
-### 14. make ConnectDB()
+## 14. create some files and folders like this
 
 ```
    ├─ src
@@ -136,14 +145,14 @@ i. production code run command
    └─ tsconfig.json
 ```
 
-### 15. Setup Typescript Eslint
+## 15. Setup Typescript Eslint
 
 🔗 Links: https://typescript-eslint.io/getting-started \* run this command
 
 <!-- install -->
 
 ```
-    npm install --save-dev eslint @eslint/js @types/eslint__js typescript typescript-eslint
+npm install --save-dev eslint @eslint/js @types/eslint__js typescript typescript-eslint
 ```
 
 <!-- run -->
@@ -192,11 +201,10 @@ export default tseslint.config(
     "lint:fix": "npx eslint src --fix",
 ```
 
-### 16. prettier setup. > go to
+## 16. prettier setup. > go to
 
-```
+🔗 Links:
 https://prettier.io/docs/en/install
-```
 
 1. and install
 
@@ -210,7 +218,7 @@ npm install --save-dev --save-exact prettier
 node --eval "fs.writeFileSync('.prettierrc','{}\n')"
 ```
 
-.. and paste it
+### And paste it
 
 ```
 {
