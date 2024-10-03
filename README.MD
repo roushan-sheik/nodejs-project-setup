@@ -61,9 +61,9 @@ npm i typescript --save-dev
 tsc --init
 ```
 
-```
-  //rootDir: "./src",
-  //outDir: "./dist"
+```js
+  rootDir: "./src",
+  outDir: "./dist"
 ```
 
 ## 9. go to express for hello world setup
@@ -127,7 +127,7 @@ tsc --init
 
 ### Production code run command
 
-```
+```js
 "start:prod": "nodemon ./dist/server.js"
 ```
 
@@ -163,40 +163,40 @@ npm install --save-dev eslint @eslint/js @types/eslint__js typescript typescript
 
 - paste this code
 
-```
+```js
 import eslint from "@eslint/js";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
- eslint.configs.recommended,
- ...tseslint.configs.recommended,
- {
-   rules: {
-     "no-unused-vars": "error",
-     "no-undef": "error",
-     "prefer-const": "error",
-     "no-console": "warn",
-     "no-var": "error",
-     "no-mixed-spaces-and-tabs": "error",
-   },
- },
- {
-   languageOptions: {
-     globals: {
-       ...globals.node,
-     },
-   },
- },
- {
-   ignores: [".env", "./dist", "node_modules"],
- }
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    rules: {
+      "no-unused-vars": "error",
+      "no-undef": "error",
+      "prefer-const": "error",
+      "no-console": "warn",
+      "no-var": "error",
+      "no-mixed-spaces-and-tabs": "error",
+    },
+  },
+  {
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
+    ignores: [".env", "./dist", "node_modules"],
+  }
 );
 ```
 
 4. create script for eslint inside packege.json file
 
-```
+```js
     "lint": "npx eslint src",
     "lint:fix": "npx eslint src --fix",
 ```
@@ -214,13 +214,13 @@ npm install --save-dev --save-exact prettier
 
 2. run tis command for creating .prettierrc file
 
-```
+```js
 node --eval "fs.writeFileSync('.prettierrc','{}\n')"
 ```
 
 ### And paste it
 
-```
+```js
 {
 "singleQuote": false,
 "bracketSpacing": true,
@@ -233,7 +233,7 @@ node --eval "fs.writeFileSync('.prettierrc','{}\n')"
 
 3.  run tis command for creating .prettierignore file
 
-```
+```js
 node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"
 ```
 
@@ -254,7 +254,7 @@ composer.lock
 
     5. make script for prettier inside packege.json
 
-```
+```js
     "prettier": "prettier --ignore-path .gitignore --write src",
     "prettier:fix": "prettier --write src",
 ```
