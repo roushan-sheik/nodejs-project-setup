@@ -66,6 +66,7 @@ npm i typescript --save-dev
 <===============|| run the project || ===============> 11. run the project
 // basic way
 
+    install nodemon if you already installed it dont need to install again.
     ```
     npm i -D nodemon
     ```
