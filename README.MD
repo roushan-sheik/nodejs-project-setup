@@ -95,78 +95,79 @@ npm i typescript --save-dev
 ```
 
 14. Setup Typescript Eslint
+
     > https://typescript-eslint.io/getting-started
+
     1.  run this command
+
     ```
     npm install --save-dev eslint @eslint/js @types/eslint__js typescript typescript-eslint
     ```
-    2.  run tis command for creating eslint.config.mjs file
 
-```
-node --eval "fs.writeFileSync('eslint.config.mjs','{}\n')"
-```
+    2. run tis command for creating eslint.config.mjs file
+
+       > eslint.config.mjs
 
     3. paste this code
-    ```
-    import eslint from "@eslint/js";
 
+```
+import eslint from "@eslint/js";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-eslint.configs.recommended,
-...tseslint.configs.recommended,
-{
-rules: {
-"no-unused-vars": "error",
-"no-undef": "error",
-"prefer-const": "error",
-"no-console": "warn",
-"no-var": "error",
-"no-mixed-spaces-and-tabs": "error",
-},
-},
-{
-languageOptions: {
-globals: {
-...globals.node,
-},
-},
-},
-{
-ignores: [".env", "./dist", "node_modules"],
-}
+ eslint.configs.recommended,
+ ...tseslint.configs.recommended,
+ {
+   rules: {
+     "no-unused-vars": "error",
+     "no-undef": "error",
+     "prefer-const": "error",
+     "no-console": "warn",
+     "no-var": "error",
+     "no-mixed-spaces-and-tabs": "error",
+   },
+ },
+ {
+   languageOptions: {
+     globals: {
+       ...globals.node,
+     },
+   },
+ },
+ {
+   ignores: [".env", "./dist", "node_modules"],
+ }
 );
-
 ```
+
 4. create script for eslint inside packege.json file
-```
 
+```
     "lint": "npx eslint src",
     "lint:fix": "npx eslint src --fix",
-
 ```
-
 
 15. prettier setup. > go to
-```
 
+```
 https://prettier.io/docs/en/install
+```
 
-````
-	1. and install
-	```
-	npm install --save-dev --save-exact prettier
-	```
-  2. run tis command for creating .prettierrc file
-````
+    1. and install
+    ```
+    npm install --save-dev --save-exact prettier
+    ```
 
+2. run tis command for creating .prettierrc file
+
+```
 node --eval "fs.writeFileSync('.prettierrc','{}\n')"
-
 ```
+
 .. and paste it
-```
 
+```
 {
 "singleQuote": false,
 "bracketSpacing": true,
@@ -176,33 +177,31 @@ node --eval "fs.writeFileSync('.prettierrc','{}\n')"
 }
 
 ```
- 3. run tis command for creating .prettierignore file
-```
 
+3.  run tis command for creating .prettierignore file
+
+```
 node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"
-
-```
-  4. paste this code
 ```
 
+    4. paste this code
+
+```
 node_modules
 dist
-.env\*
+.env*
 vendor/
 /vendor
 public/
 .git
-\*\*/.git
+**/.git
 package-lock.json
 composer.lock
-
-```
-	5. make script for prettier inside packege.json
 ```
 
+    5. make script for prettier inside packege.json
+
+```
     "prettier": "prettier --ignore-path .gitignore --write src",
     "prettier:fix": "prettier --write src",
-
-```
-
 ```
