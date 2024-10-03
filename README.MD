@@ -71,41 +71,43 @@ npm i typescript --save-dev
 
 ### 11. run the project
 
-// basic way
+#> basic way
 
-    install nodemon if you already installed it dont need to install again.
-    ```
-    npm i -D nodemon
-    ```
-      1. open two terminal
+1. install nodemon if you already installed it dont need to install again.
+   ```
+   npm i -D nodemon
+   ```
+2. open two terminal
 
-      2. for watching ts file
-    ```
-     tsc -w
-    ```
-     2. now run js code with nodemon
+3. for watching ts file
 
-    ```
-    nodemon ./dist/server.js
-    ```
+   ```
+   tsc -w
+   ```
+
+   2. now run js code with nodemon
+
+   ```
+   nodemon ./dist/server.js
+   ```
 
 <===============|| Another final solution for run the project || ===============>
 
 ### 12. run the project wit ts-node-dev
 
-    1. https://www.npmjs.com/package/ts-node-dev
+🔗 Links https://www.npmjs.com/package/ts-node-dev
 
-    2. install
+2. install
 
-    ```
-     npm i ts-node-dev
-    ```
+   ```
+   npm i ts-node-dev
+   ```
 
-    > > run your app by this command
+3. run your app by this command
 
-    ```
-     ts-node-dev --respawn --transpile-only ./src/server.ts
-    ```
+   ```
+   ts-node-dev --respawn --transpile-only ./src/server.ts
+   ```
 
 ### 13. write a script for this big command inside your packege.json file
 
