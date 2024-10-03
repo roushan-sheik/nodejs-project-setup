@@ -1,44 +1,47 @@
-# Basic Project Setup
+# Node Js Project Setup
 
-1. initialization
-   ```
-    npm init
-   ```
-2. set entry point
+### 1. initialization
+
+```
+ npm init
+```
+
+### set entry point
 
 ```
 ./dist/server.ts
 ```
 
-3. go to express docs and install
+### 2. go to express docs and install
 
 ```
     npm i express
 ```
 
-4. go to type script docs and install
+### 3. go to type script docs and install
 
 ```
 npm i typescript --save-dev
 ```
 
-5. install those packeges
+### 4. install those packeges
 
 ```
  npm i cors dot env mongoose
 
 ```
 
-6. create a
+### 5. create a
 
 ```
 .gitignore file
 ```
 
-// go to this website and copy the ignore code
-</> https://mrkandreev.name/snippets/gitignore-generator/#Node
+### 6. go to this website and copy the ignore code
 
-7. create this files and folders
+🔗 Links: https://mrkandreev.name/snippets/gitignore-generator/#Node
+
+### 7. create this files and folders
 
 ```
 └─ .
@@ -52,18 +55,22 @@ npm i typescript --save-dev
 
 ```
 
-8. initialize typecript > tsc --init > set >>> rootDir: "./src" & outDir:"./dist"
+### 8. initialize typecript > tsc --init > set >>> rootDir: "./src" & outDir:"./dist"
 
-9. go to express for hello world setup
-   </> https://expressjs.com/en/starter/hello-world.html
+### 9. go to express for hello world setup
 
-10. use common js import syntax
+🔗 Links: https://expressjs.com/en/starter/hello-world.html
+
+### 10. use common js import syntax
 
 ```
     npm i --save-dev @types/express
 ```
 
-<===============|| run the project || ===============> 11. run the project
+<===============|| run the project || ===============>
+
+### 11. run the project
+
 // basic way
 
     install nodemon if you already installed it dont need to install again.
@@ -84,7 +91,7 @@ npm i typescript --save-dev
 
 <===============|| Another final solution for run the project || ===============>
 
-12. run the project wit ts-node-dev
+### 12. run the project wit ts-node-dev
 
     1. https://www.npmjs.com/package/ts-node-dev
 
@@ -100,7 +107,7 @@ npm i typescript --save-dev
      ts-node-dev --respawn --transpile-only ./src/server.ts
     ```
 
-13. write a script for this big command inside your packege.json file
+### 13. write a script for this big command inside your packege.json file
 
 ```
 "start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts"
@@ -113,7 +120,7 @@ i. production code run command
 "start:prod": "nodemon ./dist/server.js"
 ```
 
-14. make connectdb()
+### 14. make ConnectDB()
 
 ```
    ├─ src
@@ -127,21 +134,23 @@ i. production code run command
    └─ tsconfig.json
 ```
 
-14. Setup Typescript Eslint
+### 15. Setup Typescript Eslint
 
-    > https://typescript-eslint.io/getting-started
+🔗 Links: https://typescript-eslint.io/getting-started \* run this command
 
-    1.  run this command
+<!-- install -->
 
-    ```
+```
     npm install --save-dev eslint @eslint/js @types/eslint__js typescript typescript-eslint
-    ```
+```
 
-    2. run tis command for creating eslint.config.mjs file
+<!-- run -->
 
-       > eslint.config.mjs
+- run tis command for creating eslint. config.mjs file
 
-    3. paste this code
+  > eslint.config.mjs
+
+- paste this code
 
 ```
 import eslint from "@eslint/js";
@@ -181,7 +190,7 @@ export default tseslint.config(
     "lint:fix": "npx eslint src --fix",
 ```
 
-15. prettier setup. > go to
+### 16. prettier setup. > go to
 
 ```
 https://prettier.io/docs/en/install
@@ -189,15 +198,15 @@ https://prettier.io/docs/en/install
 
 1. and install
 
-   ```
-   npm install --save-dev --save-exact prettier
-   ```
+```
+npm install --save-dev --save-exact prettier
+```
 
 2. run tis command for creating .prettierrc file
 
-   ```
-   node --eval "fs.writeFileSync('.prettierrc','{}\n')"
-   ```
+```
+node --eval "fs.writeFileSync('.prettierrc','{}\n')"
+```
 
 .. and paste it
 
@@ -238,4 +247,29 @@ composer.lock
 ```
     "prettier": "prettier --ignore-path .gitignore --write src",
     "prettier:fix": "prettier --write src",
+```
+
+## Final File and Folder Structur
+
+```
+└─ .
+   ├─ .env
+   ├─ .env.sample
+   ├─ .prettierignore
+   ├─ .prettierrc
+   ├─ eslint.config.mjs
+   ├─ package-lock.json
+   ├─ package.json
+   ├─ public
+   ├─ README.MD
+   ├─ src
+   │  ├─ app
+   │  ├─ app.ts
+   │  ├─ config
+   │  │  └─ env.config.ts
+   │  ├─ db
+   │  │  └─ ConnectDB.ts
+   │  └─ server.ts
+   └─ tsconfig.json
+
 ```
