@@ -120,7 +120,7 @@ tsc --init
 
 ## 13. write a script for this big command inside your packege.json file
 
-```
+```js
 "start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts"
 
 ```
