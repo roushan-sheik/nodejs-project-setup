@@ -1,226 +1,241 @@
 # Basic Project Setup
 
-## 1. Initialize Project
+1. initialization
+   ```
+    npm init
+   ```
+2. set entry point
 
-Initialize the project by creating a \`package.json\` file:
-\`\`\`bash
-npm init
-\`\`\`
-
-## 2. Set Entry Point
-
-Set the entry point of your application to:
-\`\`\`
+```
 ./dist/server.ts
-\`\`\`
+```
 
-## 3. Install Express
+3. go to express docs and install
 
-Install Express by referring to the [Express documentation](https://expressjs.com/):
-\`\`\`bash
-npm i express
-\`\`\`
+```
+    npm i express
+```
 
-## 4. Install TypeScript
+4. go to type script docs and install
 
-Install TypeScript as a dev dependency:
-\`\`\`bash
+```
 npm i typescript --save-dev
-\`\`\`
+```
 
-## 5. Install Required Packages
+5. install those packeges
 
-Install the following packages for your project:
-\`\`\`bash
-npm i cors dotenv mongoose
-\`\`\`
+```
+ npm i cors dot env mongoose
 
-## 6. Create a \`.gitignore\` File
+```
 
-- Create a \`.gitignore\` file.
-- Use the [Gitignore Generator](https://mrkandreev.name/snippets/gitignore-generator/#Node) to copy the appropriate \`.gitignore\` rules for a Node.js project.
+6. create a
 
-## 7. Create File and Folder Structure
+```
+.gitignore file
+```
 
-Create the following file and folder structure:
-\`\`\`
+// go to this website and copy the ignore code
+</> https://mrkandreev.name/snippets/gitignore-generator/#Node
+
+7. create this files and folders
+
+```
 └─ .
-├─ package-lock.json
-├─ package.json
-├─ public
-└─ src
-├─ app
-├─ app.ts
-└─ server.ts
-\`\`\`
+   ├─ package-lock.json
+   ├─ package.json
+   ├─ public
+   └─ src
+      ├─ app
+      ├─ app.ts
+      └─ server.ts
 
-## 8. Initialize TypeScript Configuration
+```
 
-Run the following command to create \`tsconfig.json\`:
-\`\`\`bash
-tsc --init
-\`\`\`
-Then update the \`tsconfig.json\`:
+8. initialize typecript > tsc --init > set >>> rootDir: "./src" & outDir:"./dist"
 
-- Set \`rootDir: "./src"\`
-- Set \`outDir: "./dist"\`
+9. go to express for hello world setup
+   </> https://expressjs.com/en/starter/hello-world.html
 
-## 9. Express "Hello World" Setup
+10. use common js import syntax
 
-Follow the [Express Hello World example](https://expressjs.com/en/starter/hello-world.html) to set up a basic server.
+```
+    npm i --save-dev @types/express
+```
 
-## 10. CommonJS Import Syntax
+<===============|| run the project || ===============> 11. run the project
+// basic way
 
-Install TypeScript types for Express:
-\`\`\`bash
-npm i --save-dev @types/express
-\`\`\`
+    install nodemon if you already installed it dont need to install again.
+    ```
+    npm i -D nodemon
+    ```
+      1. open two terminal
 
-## 11. Running the Project
+      2. for watching ts file
+    ```
+     tsc -w
+    ```
+     2. now run js code with nodemon
 
-### Using Nodemon
+    ```
+    nodemon ./dist/server.js
+    ```
 
-Install \`nodemon\` if it's not installed already:
-\`\`\`bash
-npm i -D nodemon
-\`\`\`
+<===============|| Another final solution for run the project || ===============>
 
-#### Running the Project:
+12. run the project wit ts-node-dev
 
-1. Open two terminal windows.
-2. In the first terminal, run TypeScript in watch mode:
-   \`\`\`bash
-   tsc -w
-   \`\`\`
-3. In the second terminal, use \`nodemon\` to run the compiled JavaScript:
-   \`\`\`bash
-   nodemon ./dist/server.js
-   \`\`\`
+    1. https://www.npmjs.com/package/ts-node-dev
 
-## 12. Alternative: Use \`ts-node-dev\`
+    2. install
 
-Follow these steps to use \`ts-node-dev\` for development:
+    ```
+     npm i ts-node-dev
+    ```
 
-1. Install \`ts-node-dev\`:
-   \`\`\`bash
-   npm i ts-node-dev
-   \`\`\`
-2. Run the application:
-   \`\`\`bash
-   ts-node-dev --respawn --transpile-only ./src/server.ts
-   \`\`\`
+    > > run your app by this command
 
-## 13. Add Dev Script in \`package.json\`
+    ```
+     ts-node-dev --respawn --transpile-only ./src/server.ts
+    ```
 
-Create a script to run the project using \`ts-node-dev\`:
-\`\`\`json
-"scripts": {
-"start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
+13. write a script for this big command inside your packege.json file
+
+```
+"start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts"
+
+```
+
+i. production code run command
+
+```
 "start:prod": "nodemon ./dist/server.js"
-}
-\`\`\`
+```
 
-## 14. Setup \`ConnectDB\`
+14. make connectdb()
 
-Create the following folder structure to set up the database connection:
-\`\`\`
-├─ src
-│ ├─ app
-│ ├─ app.ts
-│ ├─ config
-│ │ └─ env.config.ts
-│ ├─ db
-│ │ └─ ConnectDB.ts
-│ └─ server.ts
-└─ tsconfig.json
-\`\`\`
+```
+   ├─ src
+   │  ├─ app
+   │  ├─ app.ts
+   │  ├─ config
+   │  │  └─ env.config.ts
+   │  ├─ db
+   │  │  └─ ConnectDB.ts
+   │  └─ server.ts
+   └─ tsconfig.json
+```
 
-## 15. Set Up ESLint for TypeScript
+14. Setup Typescript Eslint
 
-Follow the [ESLint + TypeScript setup guide](https://typescript-eslint.io/getting-started):
+    > https://typescript-eslint.io/getting-started
 
-1. Install ESLint and related packages:
-   \`\`\`bash
-   npm install --save-dev eslint @eslint/js @types/eslint\_\_js typescript typescript-eslint
-   \`\`\`
-2. Create an ESLint config file (\`eslint.config.mjs\`):
-   \`\`\`bash
-   node --eval "fs.writeFileSync('eslint.config.mjs')"
-   \`\`\`
-3. Paste the following into the \`eslint.config.mjs\` file:
-   \`\`\`javascript
-   import eslint from "@eslint/js";
-   import globals from "globals";
-   import tseslint from "typescript-eslint";
+    1.  run this command
 
-   export default tseslint.config(
-   eslint.configs.recommended,
-   ...tseslint.configs.recommended,
-   {
+    ```
+    npm install --save-dev eslint @eslint/js @types/eslint__js typescript typescript-eslint
+    ```
+
+    2. run tis command for creating eslint.config.mjs file
+
+       > eslint.config.mjs
+
+    3. paste this code
+
+```
+import eslint from "@eslint/js";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+
+export default tseslint.config(
+ eslint.configs.recommended,
+ ...tseslint.configs.recommended,
+ {
    rules: {
-   "no-unused-vars": "error",
-   "no-undef": "error",
-   "prefer-const": "error",
-   "no-console": "warn",
-   "no-var": "error",
-   "no-mixed-spaces-and-tabs": "error",
+     "no-unused-vars": "error",
+     "no-undef": "error",
+     "prefer-const": "error",
+     "no-console": "warn",
+     "no-var": "error",
+     "no-mixed-spaces-and-tabs": "error",
    },
-   },
-   {
+ },
+ {
    languageOptions: {
-   globals: {
-   ...globals.node,
+     globals: {
+       ...globals.node,
+     },
    },
-   },
-   },
-   {
+ },
+ {
    ignores: [".env", "./dist", "node_modules"],
-   }
-   );
-   \`\`\`
+ }
+);
+```
 
-4. Add ESLint scripts in \`package.json\`:
-   \`\`\`json
-   "scripts": {
-   "lint": "npx eslint src",
-   "lint:fix": "npx eslint src --fix"
-   }
-   \`\`\`
+4. create script for eslint inside packege.json file
 
-## 16. Prettier Setup
+```
+    "lint": "npx eslint src",
+    "lint:fix": "npx eslint src --fix",
+```
 
-Refer to the [Prettier documentation](https://prettier.io/docs/en/install) for setting up Prettier:
+15. prettier setup. > go to
 
-1. Install Prettier:
-   \`\`\`bash
+```
+https://prettier.io/docs/en/install
+```
+
+1. and install
+
+   ```
    npm install --save-dev --save-exact prettier
-   \`\`\`
+   ```
 
-2. Create a \`.prettierrc\` file:
-   \`\`\`bash
-   node --eval "fs.writeFileSync('.prettierrc','{}\\n')"
-   \`\`\`
+2. run tis command for creating .prettierrc file
 
-3. Paste the following into the \`.prettierrc\` file:
-   \`\`\`json
-   {
-   "singleQuote": false,
-   "bracketSpacing": true,
-   "tabWidth": 2,
-   "trailingComma": "es5",
-   "semi": true
-   }
-   \`\`\`
+   ```
+   node --eval "fs.writeFileSync('.prettierrc','{}\n')"
+   ```
 
-4. Create a \`.prettierignore\` file:
-   \`\`\`bash
-   node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\\nbuild\\ncoverage\\n')"
-   \`\`\`
+.. and paste it
 
-5. Add Prettier scripts in \`package.json\`:
-   \`\`\`json
-   "scripts": {
-   "prettier": "prettier --ignore-path .gitignore --write src",
-   "prettier:fix": "prettier --write src"
-   }
-   \`\`\`
+```
+{
+"singleQuote": false,
+"bracketSpacing": true,
+"tabWidth": 2,
+"trailingComma": "es5",
+"semi": true
+}
+
+```
+
+3.  run tis command for creating .prettierignore file
+
+```
+node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"
+```
+
+    4. paste this code
+
+```
+node_modules
+dist
+.env*
+vendor/
+/vendor
+public/
+.git
+**/.git
+package-lock.json
+composer.lock
+```
+
+    5. make script for prettier inside packege.json
+
+```
+    "prettier": "prettier --ignore-path .gitignore --write src",
+    "prettier:fix": "prettier --write src",
+```
