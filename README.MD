@@ -63,23 +63,55 @@ npm i typescript --save-dev
     npm i --save-dev @types/express
 ```
 
-11. run the project
-    // basic way
+<===============|| run the project || ===============> 11. run the project
+// basic way
 
     ```
-    npm i -D nodemon & open 2 terminal
+    npm i -D nodemon
+    ```
+      1. open two terminal
+
+      2. for watching ts file
+    ```
+     tsc -w
+    ```
+     2. now run js code with nodemon
+
+    ```
+    nodemon ./dist/server.js
     ```
 
-    1. tsc -w <br/>
-    2. nodemon ./dist/server.js
-       <===============|| There you Go || ===============>
+<===============|| Another final solution for run the project || ===============>
 
-       <===============|| Another final solution for run the project || ===============>
+12. run the project wit ts-node-dev
 
-12. run the project 1. https://www.npmjs.com/package/ts-node-dev 2. and install 3. npm i ts-node-dev
-    > > run command
-    > > ts-node-dev --respawn --transpile-only ./src/server.ts
-13. write a script for this big command >"start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
+    1. https://www.npmjs.com/package/ts-node-dev
+
+    2. install
+
+    ```
+     npm i ts-node-dev
+    ```
+
+    > > run your app by this command
+
+    ```
+     ts-node-dev --respawn --transpile-only ./src/server.ts
+    ```
+
+13. write a script for this big command inside your packege.json file
+
+```
+"start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts"
+
+```
+
+i. production code run command
+
+```
+"start:prod": "nodemon ./dist/server.js"
+```
+
 14. make connectdb()
 
 ```
