@@ -257,6 +257,9 @@ composer.lock
    ├─ .env.sample
    ├─ .prettierignore
    ├─ .prettierrc
+   ├─ dist               # Production Code base
+   │  ├─ app.js
+   │  └─ server.js
    ├─ eslint.config.mjs
    ├─ package-lock.json
    ├─ package.json
