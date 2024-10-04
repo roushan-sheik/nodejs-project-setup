@@ -286,3 +286,82 @@ composer.lock
    └─ tsconfig.json
 
 ```
+
+================>|| Basic Setup done ||<==================
+
+# Advenced Production Setup
+
+## Huskey and Lint-Staged Setup
+
+> install
+
+```
+npm install lint-staged husky --save-dev
+
+```
+
+> initialization
+
+```
+npx husky init
+```
+
+## Follow this Moduler pattern
+
+```
+└─ .
+   ├─ .env
+   ├─ .env.sample
+   ├─ .husky
+   │  ├─ pre-commit
+   │
+   ├─ .prettierignore
+   ├─ .prettierrc
+   ├─ docker
+   │  └─ Dockerfile
+   ├─ ecosystem.config.js
+   ├─ eslint.config.mjs
+   ├─ logs
+   ├─ nginx
+   │  ├─ http.conf
+   │  └─ https.conf
+   ├─ nodemon.json
+   ├─ package-lock.json
+   ├─ package.json
+   ├─ public
+   ├─ README.MD
+   ├─ script
+   ├─ src
+   │  ├─ app
+   │  │  ├─ constants
+   │  │  ├─ errors
+   │  │  ├─ interfaces
+   │  │  ├─ middlewares
+   │  │  ├─ modules
+   │  │  │  ├─ Auth
+   │  │  │  │  ├─ auth.controller.ts
+   │  │  │  │  ├─ auth.interface.ts
+   │  │  │  │  ├─ auth.route.ts
+   │  │  │  │  ├─ auth.service.ts
+   │  │  │  │  └─ auth.validation.ts
+   │  │  │  └─ User
+   │  │  │     ├─ user.controller.ts
+   │  │  │     ├─ user.interface.ts
+   │  │  │     ├─ user.route.ts
+   │  │  │     ├─ user.service.ts
+   │  │  │     └─ user.validation.ts
+   │  │  ├─ routes
+   │  │  ├─ utils
+   │  │  └─ zod
+   │  ├─ app.ts
+   │  ├─ config
+   │  │  └─ env.config.ts
+   │  ├─ db
+   │  │  └─ ConnectDB.ts
+   │  ├─ server.ts
+   │  └─ views
+   ├─ test
+   ├─ testing.ts
+   └─ tsconfig.json
+
+```
