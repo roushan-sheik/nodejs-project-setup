@@ -189,7 +189,7 @@ export default tseslint.config(
     },
   },
   {
-       ignores: ["**/node_modules/", "**/dist/"],
+    ignores: ["**/node_modules/", "**/dist/"],
   }
 );
 ```
@@ -255,8 +255,8 @@ composer.lock
     5. make script for prettier inside packege.json
 
 ```js
-    "prettier": "prettier --ignore-path .gitignore --write src",
-    "prettier:fix": "prettier --write src",
+ "prettier": "npx prettier --ignore-path .gitignore --write src",
+    "prettier:fix": "npx prettier --write src",
 ```
 
 ## Final File and Folder Structur

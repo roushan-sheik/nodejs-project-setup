@@ -7,7 +7,7 @@ ConnectDB()
   .then(() => {
     app.listen(config.port, () => {
       console.log(
-        `\n Application is running on port: http:localhost://${config.port}`
+        `\n Application is running on port: http:localhost://${config.port}`,
       );
     });
   })

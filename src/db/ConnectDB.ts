@@ -18,7 +18,7 @@ const ConnectDB = async () => {
       dbName: "mongoose-ts",
     });
     console.log(
-      `\n MongoDB Connected !! DB HOST: ${connectionInstance.connection.host}`
+      `\n MongoDB Connected !! DB HOST: ${connectionInstance.connection.host}`,
     );
   } catch (error: any) {
     console.log("MongoDB Connection FAILED!", error.message);
