@@ -259,7 +259,7 @@ composer.lock
     "prettier:fix": "npx prettier --write src",
 ```
 
-## Make suer you have all those scripts
+## Make sure you have all those scripts
 
 ```js
   "scripts": {
