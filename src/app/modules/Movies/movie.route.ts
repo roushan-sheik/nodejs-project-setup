@@ -1,8 +1,9 @@
 import express from "express";
-import { createMovie } from "./movie.controller";
+import { MovieController } from "./movie.controller";
 
 const router = express.Router();
 
-router.route("/").post(createMovie);
+router.route("/").post(MovieController.createMovie);
+router.route("/").get(MovieController.getAllMovies);
 
 export const MovieRoute = router;
