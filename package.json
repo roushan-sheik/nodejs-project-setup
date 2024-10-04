@@ -9,7 +9,8 @@
     "prettier:fix": "npx prettier --write src",
     "start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
     "start:prod": "nodemon ./dist/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node testing.ts",
+    "prepare": "husky"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +26,8 @@
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^5.0.0",
     "eslint": "^9.11.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "nodemon": "^3.1.7",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.8.0"
