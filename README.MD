@@ -9,7 +9,7 @@
 ### Set entry point
 
 ```
-./dist/server.ts
+./dist/server.js
 ```
 
 ## 2. go to express docs and install
@@ -27,7 +27,7 @@ npm i typescript --save-dev
 ## 4. install those packeges
 
 ```
- npm i cors dot env mongoose
+ npm i cors dotenv mongoose
 
 ```
 
@@ -69,6 +69,78 @@ tsc --init
 ## 9. go to express for hello world setup
 
 🔗 Links: https://expressjs.com/en/starter/hello-world.html
+
+> app.js
+
+```js
+import express, { Request, Response } from "express";
+
+const app = express();
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello World!");
+});
+
+export { app };
+```
+
+> server.ts
+
+```js
+/* eslint-disable no-console */
+import { app } from "./app";
+import ConnectDB from "./db/ConnectDB";
+import config from "./config";
+
+ConnectDB()
+  .then(() => {
+    app.listen(config.PORT, () => {
+      console.log("Global log:::::>", config.GLOBAL);
+      console.log(
+        `\n Application is running on port: http:localhost://${config.PORT}`
+      );
+    });
+  })
+  .catch((error) => {
+    console.log("MongoDB Connectin Failed!!", error.message);
+  });
+```
+
+> ConnectDB.ts
+
+```js
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import mongoose from "mongoose";
+import config from "../config";
+
+const ConnectDB = async () => {
+  try {
+    const connectionState = mongoose.connection.readyState;
+    if (connectionState === 1) {
+      console.log("Database Already CONNECTED");
+      return;
+    }
+    if (connectionState === 2) {
+      console.log("Connecting to the DATABASE...");
+      return;
+    }
+    const connectionInstance = await mongoose.connect(
+      config.MONGO_URI as string,
+      {
+        dbName: config.DB_NAME,
+      }
+    );
+    console.log(
+      `\n MongoDB Connected !! DB HOST: ${connectionInstance.connection.host}`
+    );
+  } catch (error: any) {
+    console.log("MongoDB Connection FAILED!", error.message);
+    process.exit(1);
+  }
+};
+export default ConnectDB;
+```
 
 ## 10. use common js import syntax
 
@@ -306,7 +378,7 @@ composer.lock
 
 ================>|| Basic Setup done ||<==================
 
-# Advenced Production Setup
+# Advenced Setup
 
 ## Huskey and Lint-Staged Setup
 
