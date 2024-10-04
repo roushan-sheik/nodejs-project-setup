@@ -259,6 +259,23 @@ composer.lock
     "prettier:fix": "npx prettier --write src",
 ```
 
+## Make suer you have all those scripts
+
+```js
+  "scripts": {
+    "lint": "npx eslint src ",
+    "lint:fix": "npx eslint src --fix",
+    "prettier": "npx prettier --ignore-path .gitignore --write src",
+    "prettier:fix": "npx prettier --write src",
+    "start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "start:prod": "nodemon ./dist/server.js",
+    "build": "tsc",
+    "test": "node testing.ts",
+
+  }
+
+```
+
 ## Final File and Folder Structur
 
 ```
