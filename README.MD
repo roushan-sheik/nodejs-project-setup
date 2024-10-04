@@ -310,11 +310,11 @@ npx husky init
 
 ```
 └─ .
-   ├─ .env
-   ├─ .env.sample
+   ├─ .env.development
+   ├─ .env.example
+   ├─ .env.production
    ├─ .husky
    │  ├─ pre-commit
-   │
    ├─ .prettierignore
    ├─ .prettierrc
    ├─ docker
@@ -364,4 +364,38 @@ npx husky init
    ├─ testing.ts
    └─ tsconfig.json
 
+```
+
+## Configration
+
+### Go to dotenv-flow:
+
+🔗 Links: https://www.npmjs.com/package/dotenv-flow
+
+```
+npm i dotenv-flow
+
+```
+
+- And import it
+
+```js
+import dotenvFlow from "dotenv-flow";
+dotenvFlow.config();
+```
+
+### And corss env
+
+🔗 Links: https://www.npmjs.com/package/cross-env
+
+```
+npm i cross-env
+
+```
+
+- Modify scripts
+
+```js
+  "start:dev": "cross-env  NODE_ENV=development  ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "start:prod": "cross-env NODE_ENV=production nodemon ./dist/server.js",
 ```

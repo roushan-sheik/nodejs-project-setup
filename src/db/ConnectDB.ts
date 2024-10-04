@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import mongoose from "mongoose";
-import { config } from "../config/env.config";
+import config from "../config";
 
 const ConnectDB = async () => {
   try {
@@ -14,11 +14,14 @@ const ConnectDB = async () => {
       console.log("Connecting to the DATABASE...");
       return;
     }
-    const connectionInstance = await mongoose.connect(config.db_url as string, {
-      dbName: "mongoose-ts",
-    });
+    const connectionInstance = await mongoose.connect(
+      config.MONGO_URI as string,
+      {
+        dbName: config.DB_NAME,
+      }
+    );
     console.log(
-      `\n MongoDB Connected !! DB HOST: ${connectionInstance.connection.host}`,
+      `\n MongoDB Connected !! DB HOST: ${connectionInstance.connection.host}`
     );
   } catch (error: any) {
     console.log("MongoDB Connection FAILED!", error.message);
