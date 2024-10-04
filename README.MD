@@ -61,7 +61,7 @@ npm i typescript --save-dev
 tsc --init
 ```
 
-```js
+```ts
   rootDir: "./src",
   outDir: "./dist"
 ```
@@ -72,7 +72,7 @@ tsc --init
 
 > app.js
 
-```js
+```ts
 import express, { Request, Response } from "express";
 
 const app = express();
@@ -86,7 +86,7 @@ export { app };
 
 > server.ts
 
-```js
+```ts
 /* eslint-disable no-console */
 import { app } from "./app";
 import ConnectDB from "./db/ConnectDB";
@@ -108,7 +108,7 @@ ConnectDB()
 
 > ConnectDB.ts
 
-```js
+```ts
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import mongoose from "mongoose";
@@ -192,14 +192,14 @@ export default ConnectDB;
 
 ## 13. write a script for this big command inside your packege.json file
 
-```js
+```ts
 "start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts"
 
 ```
 
 ### Production code run command
 
-```js
+```ts
 "start:prod": "nodemon ./dist/server.js"
 ```
 
@@ -235,7 +235,7 @@ npm install --save-dev eslint @eslint/js @types/eslint__js typescript typescript
 
 - paste this code
 
-```js
+```ts
 import eslint from "@eslint/js";
 import globals from "globals";
 import tseslint from "typescript-eslint";
@@ -268,7 +268,7 @@ export default tseslint.config(
 
 4. create script for eslint inside packege.json file
 
-```js
+```ts
     "lint": "npx eslint src",
     "lint:fix": "npx eslint src --fix",
 ```
@@ -286,13 +286,13 @@ npm install --save-dev --save-exact prettier
 
 2. run tis command for creating .prettierrc file
 
-```js
+```ts
 node --eval "fs.writeFileSync('.prettierrc','{}\n')"
 ```
 
 ### And paste it
 
-```js
+```ts
 {
 "singleQuote": false,
 "bracketSpacing": true,
@@ -305,7 +305,7 @@ node --eval "fs.writeFileSync('.prettierrc','{}\n')"
 
 3.  run tis command for creating .prettierignore file
 
-```js
+```ts
 node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"
 ```
 
@@ -326,14 +326,14 @@ composer.lock
 
     5. make script for prettier inside packege.json
 
-```js
+```ts
  "prettier": "npx prettier --ignore-path .gitignore --write src",
     "prettier:fix": "npx prettier --write src",
 ```
 
 ## Make sure you have all those scripts
 
-```js
+```ts
   "scripts": {
     "lint": "npx eslint src ",
     "lint:fix": "npx eslint src --fix",
@@ -477,7 +477,7 @@ npm i dotenv-flow
 
 ```
 
-```js
+```ts
 import dotenvFlow from "dotenv-flow";
 dotenvFlow.config();
 
@@ -511,7 +511,7 @@ npm i cross-env
 
 - Modify scripts
 
-```js
+```ts
   "start:dev": "cross-env  NODE_ENV=development  ts-node-dev --respawn --transpile-only ./src/server.ts",
     "start:prod": "cross-env NODE_ENV=production nodemon ./dist/server.js",
 ```
