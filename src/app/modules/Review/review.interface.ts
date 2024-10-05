@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import {ObjectId} from "mongoose";
 
 export interface IReview {
-  movie: mongoose.Schema.Types.ObjectId;
+  movie: ObjectId;
   email: string;
   rating: number;
   comment: string;
