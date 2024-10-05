@@ -9,6 +9,7 @@ export interface IMovie {
   description: string;
   releaseDate: string;
   genre: string;
+  slug: string;
   isDeleted: boolean;
   viewCount: number;
   reviews: IReview[];

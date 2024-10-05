@@ -1,9 +1,14 @@
 import { IMovie } from "./movie.interface";
 import Movie from "./movie.model";
+import { format } from "date-fns";
+import slugify from "slugify";
 
 // create movie
 const createMovie = async (payload: IMovie) => {
-  return Movie.create(payload);
+  const date = format(payload.releaseDate, "dd-MM-yyyy");
+  const slug = slugify(`${payload.title}-${date}`, { lower: true, trim: true });
+
+  return Movie.create({ ...payload, slug });
 };
 // get all movies
 const getAllMovie = async () => {

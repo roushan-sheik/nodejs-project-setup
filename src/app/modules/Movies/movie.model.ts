@@ -33,6 +33,10 @@ const movieSchema = new Schema<IMovie>({
     type: String,
     required: true,
   },
+  slug: {
+    type: String,
+    required: true,
+  },
   isDeleted: {
     type: Boolean,
     required: true,
