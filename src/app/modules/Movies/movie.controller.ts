@@ -13,15 +13,26 @@ const createMovie = async (req: Request, res: Response) => {
     data: movie,
   });
 };
-// create movie controller
-const getAllMovies = async (req: Request, res: Response) => {
+// get all movies controller
+const getAllMovie = async (req: Request, res: Response) => {
   const result = await MovieService.getAllMovie();
 
-  res.status(StatusCodes.CREATED).json({
+  res.status(StatusCodes.OK).json({
     success: true,
-    message: "Movie is created Successfully.",
+    message: "All Movies",
+    data: result,
+  });
+};
+// create movie controller
+const getMovieById = async (req: Request, res: Response) => {
+  const { movieId } = req.params;
+  const result = await MovieService.getMovieById(movieId);
+
+  res.status(StatusCodes.OK).json({
+    success: true,
+    message: "Found this movie by Id",
     data: result,
   });
 };
 
-export const MovieController = { createMovie, getAllMovies };
+export const MovieController = { createMovie, getAllMovie, getMovieById };

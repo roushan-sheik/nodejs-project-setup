@@ -9,8 +9,13 @@ const createMovie = async (payload: IMovie) => {
 const getAllMovie = async () => {
   return Movie.find();
 };
+// get movie by id
+const getMovieById = async (id: string) => {
+  return Movie.findById(id);
+};
 
 export const MovieService = {
   createMovie,
   getAllMovie,
+  getMovieById,
 };
