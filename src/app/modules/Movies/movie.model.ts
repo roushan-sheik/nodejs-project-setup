@@ -1,24 +1,9 @@
 import { model, Schema } from "mongoose";
-import { IMovie, IReview } from "./movie.interface";
+import { IMovie, MovieModel } from "./movie.interface";
 import { format } from "date-fns";
 import slugify from "slugify";
 
-const reviewSchema = new Schema<IReview>({
-  comment: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  rating: {
-    type: Number,
-    required: true,
-  },
-});
-
-const movieSchema = new Schema<IMovie>({
+const movieSchema = new Schema<IMovie, MovieModel>({
   title: {
     type: String,
     required: true,
@@ -29,7 +14,6 @@ const movieSchema = new Schema<IMovie>({
   },
   releaseDate: {
     type: String,
-    required: true,
   },
   genre: {
     type: String,
@@ -40,23 +24,41 @@ const movieSchema = new Schema<IMovie>({
   },
   isDeleted: {
     type: Boolean,
-    required: true,
+    default: false,
   },
   viewCount: {
     type: Number,
-    required: true,
+    default: 0,
   },
-  reviews: [reviewSchema],
+  totalRating: {
+    type: Number,
+    default: 0,
+  },
 });
 
-// make slug befoure save the user in to DB
-movieSchema.pre("save", function (next) {
-  const date = format(this.releaseDate, "dd-MM-yyyy");
-  const slug = slugify(`${this.title}-${date}`, { lower: true, trim: true });
-  this.slug = slug;
-  next();
+// make slug befoure save the user in to DB ================>
+// movieSchema.pre("save", function (next) {
+//   const date = format(this.releaseDate, "dd-MM-yyyy");
+//   const slug = slugify(`${this.title}-${date}`, { lower: true, trim: true });
+//   this.slug = slug;
+//   next();
+// });
+
+// custom instance method  =============================>
+// movieSchema.method("createSlug", function (payload: IMovie) {
+//   const date = format(payload.releaseDate, "dd-MM-yyyy");
+//   const slug = slugify(`${payload.title}-${date}`, { lower: true, trim: true });
+//   return slug;
+// });
+
+// custom static method  =============================>
+
+movieSchema.static("createSlug", function myStaticMethod(payload: IMovie) {
+  const date = format(payload.releaseDate, "dd-MM-yyyy");
+  const slug = slugify(`${payload.title}-${date}`, { lower: true, trim: true });
+  return slug;
 });
 
-const Movie = model<IMovie>("Movie", movieSchema);
+const Movie = model<IMovie, MovieModel>("Movie", movieSchema);
 
 export default Movie;

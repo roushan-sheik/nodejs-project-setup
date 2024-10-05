@@ -8,7 +8,12 @@ const createMovie = async (payload: IMovie) => {
   // const date = format(payload.releaseDate, "dd-MM-yyyy");
   // const slug = slugify(`${payload.title}-${date}`, { lower: true, trim: true });
 
-  return Movie.create(payload);
+  const result = new Movie(payload);
+  result.slug = Movie.createSlug(payload);
+
+  await result.save();
+
+  return result;
 };
 // get all movies
 const getAllMovie = async () => {
