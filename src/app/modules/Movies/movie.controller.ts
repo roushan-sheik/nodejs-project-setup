@@ -37,7 +37,7 @@ const getAllMovie = async (req: Request, res: Response) => {
       .json({ message: err.message });
   }
 };
-// create movie controller ====================>
+// get movie by id controller ====================>
 const getMovieById = async (req: Request, res: Response) => {
   try {
     const { movieId } = req.params;
@@ -55,5 +55,29 @@ const getMovieById = async (req: Request, res: Response) => {
       .json({ message: err.message });
   }
 };
+// get movie by slug controller ====================>
+const getMovieBySlug = async (req: Request, res: Response) => {
+  try {
+    const { slug } = req.params;
+    console.log("Slug::::============>", slug);
+    const result = await MovieService.getMovieBySlug(slug);
 
-export const MovieController = { createMovie, getAllMovie, getMovieById };
+    res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Found this movie by Slug",
+      data: result,
+    });
+  } catch (error) {
+    const err = error as Error;
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ message: err.message });
+  }
+};
+
+export const MovieController = {
+  createMovie,
+  getAllMovie,
+  getMovieById,
+  getMovieBySlug,
+};
