@@ -59,7 +59,7 @@ const getMovieById = async (req: Request, res: Response) => {
 const getMovieBySlug = async (req: Request, res: Response) => {
   try {
     const { slug } = req.params;
-    console.log("Slug::::============>", slug);
+
     const result = await MovieService.getMovieBySlug(slug);
 
     res.status(StatusCodes.OK).json({
