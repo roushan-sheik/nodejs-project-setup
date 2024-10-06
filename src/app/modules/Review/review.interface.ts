@@ -1,7 +1,7 @@
-import {ObjectId} from "mongoose";
+import { ObjectId } from "mongoose";
 
 export interface IReview {
-  movie: ObjectId;
+  movie?: ObjectId;
   email: string;
   rating: number;
   comment: string;
