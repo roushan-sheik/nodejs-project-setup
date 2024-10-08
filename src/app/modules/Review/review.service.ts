@@ -49,7 +49,8 @@ const addReview = async (
     await session.abortTransaction();
 
     const err = error as Error;
-    console.log(err.message);
+    // throw the error again
+    throw new Error(err.message);
   } finally {
     // Ending the session
     session.endSession();

@@ -1,27 +1,26 @@
 import { Request, Response } from "express";
 import { ReviewService } from "./review.service";
 import { StatusCodes } from "http-status-codes";
+import AsyncHandler from "../../utils/AsyncHandler";
+import ApiResponse from "../../utils/ApiResponse";
 
 // create review controller ====================>
-const addReview = async (req: Request, res: Response) => {
-  try {
-    const reviewData = req.body;
-    console.log(reviewData);
-    const { slug } = req.params;
-    const review = await ReviewService.addReview(slug, reviewData);
+const addReview = AsyncHandler(async (req: Request, res: Response) => {
+  const reviewData = req.body;
 
-    res.status(StatusCodes.CREATED).json({
-      success: true,
-      message: "Review is created Successfully.",
-      data: review,
-    });
-  } catch (error) {
-    const err = error as Error;
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ message: err.message });
-  }
-};
+  const { slug } = req.params;
+  const review = await ReviewService.addReview(slug, reviewData);
+
+  res
+    .status(StatusCodes.CREATED)
+    .json(
+      new ApiResponse(
+        StatusCodes.CREATED,
+        review,
+        "New review is added successfully"
+      )
+    );
+});
 
 // // get all movies controller ====================>
 // const getAllReview = async (req: Request, res: Response) => {
