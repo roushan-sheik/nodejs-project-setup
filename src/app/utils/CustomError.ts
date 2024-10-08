@@ -45,13 +45,15 @@ class CustomError extends Error {
 
 export default CustomError;
 
+// Input Data  ==================>
 // 1. statusCode
 // 2. message
 // 3. errors
 // 4. data
 // 5. timestamp
 // 6. stack
-// // Output obj
+
+// // Output obj ================>
 // 1. statusCode
 // 2. message
 // 3. errors
