@@ -44,3 +44,19 @@ class CustomError extends Error {
 }
 
 export default CustomError;
+
+// 1. statusCode
+// 2. message
+// 3. errors
+// 4. data
+// 5. timestamp
+// 6. stack
+// // Output obj
+// 1. statusCode
+// 2. message
+// 3. errors
+// 4. data
+// 5. timestamp
+// 6. success
+// 7. errorType
+// 8. stack
