@@ -21,7 +21,7 @@ const getAllMovie = async () => {
 };
 // get movie by id
 const getMovieById = async (id: string) => {
-  return Movie.findById(id);
+  return await Movie.findById(id);
 };
 // get movie by slug
 const getMovieBySlug = async (slug: string) => {

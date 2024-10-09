@@ -10,6 +10,7 @@ const reviewSchema = new Schema<IReview>({
   comment: {
     type: String,
     required: true,
+    minlength: [8, "Min length should be 6 characters."],
   },
   email: {
     type: String,

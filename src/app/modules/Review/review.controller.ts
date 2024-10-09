@@ -3,7 +3,7 @@ import { ReviewService } from "./review.service";
 import { StatusCodes } from "http-status-codes";
 import AsyncHandler from "../../utils/AsyncHandler";
 import ApiResponse from "../../utils/ApiResponse";
-import CustomError from "../../utils/CustomError";
+import ApiError from "../../utils/ApiError";
 
 // create review controller ====================>
 const addReview = AsyncHandler(async (req: Request, res: Response) => {
@@ -11,10 +11,10 @@ const addReview = AsyncHandler(async (req: Request, res: Response) => {
 
   const { slug } = req.params;
   const review = await ReviewService.addReview(slug, reviewData);
-  throw new CustomError(
-    StatusCodes.BAD_REQUEST,
-    "User is unauthorized to create a review. "
-  );
+  // throw new CustomError(
+  //   StatusCodes.BAD_REQUEST,
+  //   "User is unauthorized to create a review. "
+  // );
   res
     .status(StatusCodes.CREATED)
     .json(

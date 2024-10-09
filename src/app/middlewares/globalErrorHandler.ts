@@ -4,6 +4,7 @@
 import { ErrorRequestHandler } from "express";
 import { ICustomGlobalError } from "../interfaces/error.interface";
 import { StatusCodes } from "http-status-codes";
+import config from "../../config";
 
 const globalErrorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   const customGlobalError: ICustomGlobalError = {
@@ -18,6 +19,10 @@ const globalErrorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
     ],
   };
   // finally send the response
-  res.status(customGlobalError.statusCode).json(customGlobalError);
+  res.status(customGlobalError.statusCode).json({
+    ...customGlobalError,
+    err,
+    stack: config.NODE_ENV === "development" ? err?.stack : null,
+  });
 };
 export default globalErrorHandler;

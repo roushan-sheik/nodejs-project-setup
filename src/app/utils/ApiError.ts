@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-class CustomError extends Error {
+class ApiError extends Error {
   public success: boolean;
   public timeStamp: string;
 
@@ -43,7 +43,7 @@ class CustomError extends Error {
   }
 }
 
-export default CustomError;
+export default ApiError;
 
 // Input Data  ==================>
 // 1. statusCode

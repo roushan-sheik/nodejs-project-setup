@@ -7,6 +7,7 @@ const movieSchema = new Schema<IMovie, MovieModel>({
   title: {
     type: String,
     required: true,
+    minlength: [6, "Min length should be 6 characters"],
   },
   description: {
     type: String,
