@@ -6,9 +6,11 @@ import { ICustomGlobalError } from "../interfaces/error.interface";
 import { StatusCodes } from "http-status-codes";
 import config from "../../config";
 import handleValidationError from "../errors/handleValidationError";
+import handleCastError from "../errors/handleCastError";
+import { handleDuplicateError } from "../errors";
 
 const globalErrorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
-  const customGlobalError: ICustomGlobalError = {
+  let customGlobalError: ICustomGlobalError = {
     success: err.success || false,
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
     message: err.message || "Internal Server Error!!",
@@ -20,9 +22,15 @@ const globalErrorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
     ],
   };
   // ValidationError
-  if (err.name === "ValidationError") {
-    const simplified = handleValidationError(err);
-    customGlobalError.errorSources = simplified;
+  if (err?.name === "ValidationError") {
+    customGlobalError.errorSources = handleValidationError(err);
+  } else if (err?.name === "CastError") {
+    customGlobalError.errorSources = handleCastError(err);
+  } else if (err?.code === 11000) {
+    const simplifiedError = handleDuplicateError(err);
+    if (simplifiedError) {
+      customGlobalError = simplifiedError;
+    }
   }
 
   // finally send the response
