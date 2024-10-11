@@ -1,4 +1,4 @@
-import { ICustomGlobalError } from "../interfaces/error.interface";
+import GlobalErrorObj from "../utils/GlobalErrorObj";
 
 type TMongoDuplicateError = {
   code?: number;
@@ -15,13 +15,7 @@ const handleDuplicateError = (err: TMongoDuplicateError) => {
         message: `${keyValue[field]} is already exists!`,
       };
     });
-    const simplified: ICustomGlobalError = {
-      success: false,
-      statusCode: 400,
-      message: "Invalid Field",
-      errorSources,
-    };
-    return simplified;
+    return new GlobalErrorObj(400, "Duplicate Error", errorSources);
   }
 };
 export default handleDuplicateError;

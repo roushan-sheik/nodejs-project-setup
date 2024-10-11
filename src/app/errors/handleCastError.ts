@@ -1,5 +1,6 @@
 import { Error as MongooseError } from "mongoose";
 import { TErrorSources } from "../interfaces/error.interface";
+import GlobalErrorObj from "../utils/GlobalErrorObj";
 
 const handleCastError = (err: MongooseError.CastError) => {
   const errorSources: TErrorSources = [
@@ -8,7 +9,7 @@ const handleCastError = (err: MongooseError.CastError) => {
       message: err?.message,
     },
   ];
-  return errorSources;
+  return new GlobalErrorObj(400, "Invalid ID", errorSources);
 };
 
 export default handleCastError;

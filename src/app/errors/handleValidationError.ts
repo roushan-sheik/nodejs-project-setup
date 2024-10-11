@@ -1,5 +1,6 @@
 import { Error as MongooseError } from "mongoose";
 import { TErrorSources } from "../interfaces/error.interface";
+import GlobalErrorObj from "../utils/GlobalErrorObj";
 
 const handleValidationError = (err: MongooseError.ValidationError) => {
   const errorSources: TErrorSources = Object.values(err.errors).map(
@@ -10,7 +11,7 @@ const handleValidationError = (err: MongooseError.ValidationError) => {
       };
     }
   );
-  return errorSources;
+  return new GlobalErrorObj(400, "Validation Error", errorSources);
 };
 
 export default handleValidationError;

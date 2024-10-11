@@ -1,7 +1,7 @@
 // =======================>|| ValidationError Object || <========================>
-// ১. Validation Error
-// উদাহরণ: যদি কোনো ডকুমেন্টে ডিফাইন্ড স্কিমার ফিল্ডের জন্য ভুল ধরনের ডেটা প্রদান করা হয়,
-// অথবা প্রয়োজনীয় ফিল্ড না থাকে, তবে এই ত্রুটি দেখা দেয়।
+//* ১. Validation Error
+//? উদাহরণ: যদি কোনো ডকুমেন্টে ডিফাইন্ড স্কিমার ফিল্ডের জন্য ভুল ধরনের ডেটা প্রদান করা হয়,
+//? অথবা প্রয়োজনীয় ফিল্ড না থাকে, তবে এই ত্রুটি দেখা দেয়।
 
 export const ValidationError = {
   errors: {
@@ -85,12 +85,13 @@ export const ValidatorAndCastError = {
   message:
     'Movie validation failed: viewCount: Cast to Number failed for value "Hello" (type string) at path "viewCount", title: Min length should be 6 characters',
 };
-// NOTE: একের অধিক মিলে হচ্ছে ValidationError এরর
-// =======================>|| CastError Object || <========================>
+//? NOTE: একের অধিক মিলে হচ্ছে ValidationError এরর
 
-// ২. Cast Error
-// উদাহরণ: যখন MongoDB এর জন্য অনুপযুক্ত ধরনের ডেটা পাঠানো হয়,
-// যেমন একটি ObjectId ক্ষেত্রের জন্য ভুল ধরনের মান প্রদান করলে।
+//* =======================>|| CastError Object || <========================>
+
+//? ২. Cast Error
+//? উদাহরণ: যখন MongoDB এর জন্য অনুপযুক্ত ধরনের ডেটা পাঠানো হয়,
+//? যেমন একটি ObjectId ক্ষেত্রের জন্য ভুল ধরনের মান প্রদান করলে।
 
 export const CastError = {
   stringValue: '"66c8106d0834e0496ca0c3"',
@@ -104,9 +105,9 @@ export const CastError = {
     'Cast to ObjectId failed for value "66c8106d0834e0496ca0c3" (type string) at path "_id" for model "Movie"',
 };
 
-// ৩. Duplicate Key Error (E11000)
-// উদাহরণ: যখন একটি ডকুমেন্টে এমন একটি ক্ষেত্র থাকে যেটি unique প্রপার্টি সহ
-// ডিফাইন করা আছে এবং সেই ক্ষেত্রে একই মান দিয়ে দ্বিতীয়বার ইনসার্ট করার চেষ্টা করা হয়।
+//? ৩. Duplicate Key Error (E11000)
+//? উদাহরণ: যখন একটি ডকুমেন্টে এমন একটি ক্ষেত্র থাকে যেটি unique প্রপার্টি সহ
+//? ডিফাইন করা আছে এবং সেই ক্ষেত্রে একই মান দিয়ে দ্বিতীয়বার ইনসার্ট করার চেষ্টা করা হয়।
 
 export const DuplicateError = {
   errorResponse: {

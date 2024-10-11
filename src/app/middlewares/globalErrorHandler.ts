@@ -22,21 +22,19 @@ const globalErrorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
     ],
   };
   // ValidationError
-  if (err?.name === "ValidationError") {
-    customGlobalError.errorSources = handleValidationError(err);
-  } else if (err?.name === "CastError") {
-    customGlobalError.errorSources = handleCastError(err);
-  } else if (err?.code === 11000) {
-    const simplifiedError = handleDuplicateError(err);
-    if (simplifiedError) {
-      customGlobalError = simplifiedError;
-    }
+  if (err.name === "ValidationError") {
+    customGlobalError = handleValidationError(err);
+  } else if (err.name === "CastError") {
+    customGlobalError = handleCastError(err);
+  } else if (err.code === 11000) {
+    customGlobalError = handleDuplicateError(err)!;
   }
 
   // finally send the response
   res.status(customGlobalError.statusCode).json({
-    ...customGlobalError,
-    // err,
+    success: customGlobalError.success,
+    message: customGlobalError.message,
+    errorSources: customGlobalError.errorSources,
     stack: config.NODE_ENV === "development" ? err?.stack : null,
   });
 };
