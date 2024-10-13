@@ -3,21 +3,11 @@ import { MovieService } from "./movie.service";
 import { StatusCodes } from "http-status-codes";
 import AsyncHandler from "../../utils/AsyncHandler";
 import ApiResponse from "../../utils/ApiResponse";
-import { z } from "zod";
 
 // create movie controller ====================>
-const zMovieSchema = z.object({
-  body: z.object({
-    title: z.string().min(6, "Min length should be 6 characters"),
-    description: z.string(),
-    releaseDate: z.string(),
-    genre: z.string(),
-  }),
-});
 
 const createMovie = AsyncHandler(async (req: Request, res: Response) => {
   const movieData = req.body;
-  zMovieSchema.parse({ body: movieData });
 
   const movie = await MovieService.createMovie(movieData);
   res
