@@ -4,7 +4,7 @@ import GlobalErrorObj from "../utils/GlobalErrorObj";
 export const handleZodError = (err: ZodError) => {
   const errorSources = err.errors.map((error: ZodIssue) => {
     return {
-      path: error?.path[0] as string,
+      path: error?.path[error.path.length - 1] as string,
       message: error?.message,
     };
   });
