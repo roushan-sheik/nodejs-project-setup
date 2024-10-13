@@ -15,6 +15,8 @@ const zMovieSchema = z.object({
 
 const createMovie = AsyncHandler(async (req: Request, res: Response) => {
   const movieData = req.body;
+  zMovieSchema.parse(movieData);
+
   const movie = await MovieService.createMovie(movieData);
   res
     .status(StatusCodes.CREATED)

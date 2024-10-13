@@ -131,3 +131,47 @@ export const DuplicateError = {
     title: "InceptionMovie",
   },
 };
+
+//* =======================>|| CastError Object || <========================>
+
+//?      if (err.name === "ZodError") {
+//?        console.log(err);
+//?        res.status(400).json({ message: err?.issues });
+//?      }
+
+export const ZodError = {
+  issues: [
+    {
+      code: "invalid_type",
+      expected: "string",
+      received: "undefined",
+      path: ["releaseDate"],
+      message: "Required",
+    },
+    {
+      code: "invalid_type",
+      expected: "string",
+      received: "undefined",
+      path: ["genre"],
+      message: "Required",
+    },
+  ],
+  addIssue: [Function()],
+  addIssues: [Function()],
+  errors: [
+    {
+      code: "invalid_type",
+      expected: "string",
+      received: "undefined",
+      path: [Array],
+      message: "Required",
+    },
+    {
+      code: "invalid_type",
+      expected: "string",
+      received: "undefined",
+      path: [Array],
+      message: "Required",
+    },
+  ],
+};

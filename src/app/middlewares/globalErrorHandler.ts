@@ -8,6 +8,7 @@ import config from "../../config";
 import handleValidationError from "../errors/handleValidationError";
 import handleCastError from "../errors/handleCastError";
 import { handleDuplicateError } from "../errors";
+import { handleZodError } from "../errors/handleZodError";
 
 const globalErrorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   let customGlobalError: ICustomGlobalError = {
@@ -28,6 +29,8 @@ const globalErrorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
     customGlobalError = handleCastError(err);
   } else if (err.code === 11000) {
     customGlobalError = handleDuplicateError(err)!;
+  } else if (err.name === "ZodError") {
+    customGlobalError = handleZodError(err);
   }
 
   // finally send the response
