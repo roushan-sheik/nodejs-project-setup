@@ -12,18 +12,32 @@ const createMovie = async (payload: IMovie) => {
   result.slug = Movie.createSlug(payload);
 
   await result.save();
-
   return result;
 };
-// get all movies
-const getAllMovie = async () => {
-  return Movie.find();
+
+//? get all movies ========================>
+const getAllMovie = async (payload: Record<string, string | unknown>) => {
+  let searchTerm = "";
+  if (payload?.searchTerm) {
+    searchTerm = payload.searchTerm as string;
+  }
+  const searchableFields = ["title", "genre"];
+
+  const searchMovie = await Movie.find({
+    $or: searchableFields.map((field) => {
+      return {
+        [field]: { $regex: searchTerm, $options: "i" },
+      };
+    }),
+  });
+
+  return searchMovie;
 };
-// get movie by id
+//? get movie by id =======================>
 const getMovieById = async (id: string) => {
   return await Movie.findById(id);
 };
-// get movie by slug
+//? get movie by slug ======================>
 const getMovieBySlug = async (slug: string) => {
   return Movie.findOne({ slug });
 };

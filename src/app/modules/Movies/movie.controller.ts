@@ -18,7 +18,8 @@ const createMovie = AsyncHandler(async (req: Request, res: Response) => {
 // get all movies controller ====================>
 const getAllMovie = async (req: Request, res: Response) => {
   try {
-    const result = await MovieService.getAllMovie();
+    const payload = req.query;
+    const result = await MovieService.getAllMovie(payload);
 
     res.status(StatusCodes.OK).json({
       success: true,
