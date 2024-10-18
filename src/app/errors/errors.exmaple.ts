@@ -40,7 +40,7 @@ export const ValidationError = {
 
 //* আবার নাম্বার  এর জায়গা যখন আমরা স্টিং দিয়ে দেই তখন আমদের ValidationError এর
 //* মাঝেে আমাদের ValidatorError এর সাথে CastError ও দেয় যেমন,
-//? উদাহরণ:
+//! উদাহরণ:
 //? ধরি আপনি একটি মডেলের viewCount নামক ফিল্ডে Number টাইপের ভ্যালু আশা করছেন,
 //? কিন্তু আপনি সেখানে ভুলবশত একটি স্ট্রিং (যেমন "Hello") পাঠালেন।
 //? একই সাথে আপনার স্কিমায় title ফিল্ডের মিনিমাম লেন্থ ৬ দেওয়া আছে,
@@ -104,6 +104,7 @@ export const CastError = {
   message:
     'Cast to ObjectId failed for value "66c8106d0834e0496ca0c3" (type string) at path "_id" for model "Movie"',
 };
+//* =======================>|| Duplicate Key Error Object || <========================>
 
 //? ৩. Duplicate Key Error (E11000)
 //? উদাহরণ: যখন একটি ডকুমেন্টে এমন একটি ক্ষেত্র থাকে যেটি unique প্রপার্টি সহ
