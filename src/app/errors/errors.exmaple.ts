@@ -133,7 +133,7 @@ export const DuplicateError = {
   },
 };
 
-//* =======================>|| CastError Object || <========================>
+//* ======================>|| CastError Object || <========================>
 
 //?      if (err.name === "ZodError") {
 //?        console.log(err);
