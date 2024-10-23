@@ -87,7 +87,7 @@ export const ValidatorAndCastError = {
 };
 //? NOTE: একের অধিক মিলে হচ্ছে ValidationError এরর
 
-//* ======================>|| CastError Object || <=======================>
+//* ======================>|| CastError Object || <======================>
 
 //? ২. Cast Error
 //? উদাহরণ: যখন MongoDB এর জন্য অনুপযুক্ত ধরনের ডেটা পাঠানো হয়,
