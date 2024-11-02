@@ -197,7 +197,7 @@ MONGO_URI: "Put Your MongoDB Database Connection String Here";
    nodemon ./dist/server.js
    ```
 
-<===============|| Another final solution for run the project || ===============>
+<===============|| FINAL SOLUTION FOR RUN THE PROJECT || ===============>
 
 ## 12. Run the project directly with ts-node-dev npm package
 
@@ -236,17 +236,19 @@ MONGO_URI: "Put Your MongoDB Database Connection String Here";
 
 > Run this tow commands
 
-    ```ts
-    npm run build
-    ```
+```ts
+npm run build
+```
 
-    ```ts
-    npm run start:prod
-    ```
+```ts
+npm run start:prod
+```
 
 ## 15. Eslint Typescript Setup
 
-🔗 Links: https://typescript-eslint.io/getting-started \* run this command
+🔗 Links: https://typescript-eslint.io/getting-started
+
+- run this command
 
 <!-- install -->
 
@@ -301,19 +303,19 @@ export default tseslint.config(
 🔗 Links:
 https://prettier.io/docs/en/install
 
-1. and install
+- Prettier installation command
 
 ```
 npm install --save-dev --save-exact prettier
 ```
 
-2. run tis command for creating .prettierrc file
+- run tis command for creating .prettierrc file
 
 ```ts
 node --eval "fs.writeFileSync('.prettierrc','{}\n')"
 ```
 
-### And paste it
+- And paste it
 
 ```ts
 {
