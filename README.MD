@@ -12,29 +12,29 @@
 ./dist/server.js
 ```
 
-## 2. go to express docs and install
+## 2. after initialization go to express docs and install
 
 ```
     npm i express
 ```
 
-## 3. go to type script docs and install
+## 3. go to typescript docs and install
 
 ```
 npm i typescript --save-dev
 ```
 
-## 4. install those packeges
+## 4. install those packages
 
 ```
  npm i cors dotenv mongoose
 
 ```
 
-## 5. create a
+## 5. create a .gitignore file
 
 ```
-.gitignore file
+.gitignore
 ```
 
 ## 6. go to this website and copy the ignore code
@@ -55,7 +55,7 @@ npm i typescript --save-dev
 
 ```
 
-## 8. initialize typecript
+## 8. initialize typecript and set root and out directory
 
 ```
 tsc --init
