@@ -222,15 +222,13 @@ MONGO_URI: "Put Your MongoDB Database Connection String Here";
 
 ```
 
-### Make those commands
+### Make those commands in your package.json file
 
 ```ts
-// Make a build command
 "build":"tsc-- watch"
 ```
 
 ```ts
-// Write a script for run the production code
 "start:prod": "nodemon ./dist/server.js"
 ```
 
@@ -238,16 +236,14 @@ MONGO_URI: "Put Your MongoDB Database Connection String Here";
 
 > Run this tow commands
 
-    1.
-      ```ts
-      npm run build
-      ```
-    2.
-      ```ts
-      npm run start:prod
-      ```
+1.  ```ts
+    npm run build
+    ```
+2.  ```ts
+    npm run start:prod
+    ```
 
-## 15. Setup Typescript Eslint
+## 15. Eslint Typescript Setup
 
 🔗 Links: https://typescript-eslint.io/getting-started \* run this command
 
@@ -257,11 +253,7 @@ MONGO_URI: "Put Your MongoDB Database Connection String Here";
 npm install --save-dev eslint @eslint/js @types/eslint__js typescript typescript-eslint
 ```
 
-<!-- run -->
-
-- run tis command for creating eslint. config.mjs file
-
-  > eslint.config.mjs
+- Inside your eslint.config.mjs file
 
 - paste this code
 
@@ -296,7 +288,7 @@ export default tseslint.config(
 );
 ```
 
-4. create script for eslint inside packege.json file
+- Create script for Eslint inside package.json file
 
 ```ts
     "lint": "npx eslint src",
