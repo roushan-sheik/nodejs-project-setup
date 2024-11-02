@@ -156,6 +156,14 @@ export default {
 };
 ```
 
+> .env
+
+```ts
+PORT = "5000";
+DB_NAME = "test-db";
+MONGO_URI: "Put Your MongoDB Database Connection String Here";
+```
+
 ## 10. use common js import syntax
 
 ```
