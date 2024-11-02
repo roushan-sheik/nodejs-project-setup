@@ -236,10 +236,11 @@ MONGO_URI: "Put Your MongoDB Database Connection String Here";
 
 > Run this tow commands
 
-1.  ```ts
+    ```ts
     npm run build
     ```
-2.  ```ts
+
+    ```ts
     npm run start:prod
     ```
 
