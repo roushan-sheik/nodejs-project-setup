@@ -142,6 +142,20 @@ const ConnectDB = async () => {
 export default ConnectDB;
 ```
 
+> src/config/index.ts
+
+```ts
+import dotenvFlow from "dotenv-flow";
+dotenvFlow.config();
+
+export default {
+  PORT: process.env.PORT,
+  DB_NAME: process.env.DB_NAME,
+  // mongodb connection string
+  MONGO_URI: process.env.MONGO_URI,
+};
+```
+
 ## 10. use common js import syntax
 
 ```
