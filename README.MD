@@ -52,10 +52,15 @@ npm i typescript --save-dev
       ├─ app
       ├─ app.ts
       └─ server.ts
+      └─ config
+          ├─ index.ts
+
+   └─ .env
+
 
 ```
 
-## 8. initialize typecript and set root and out directory
+## 8. Initialize typecript and set root and out directory
 
 ```
 tsc --init
@@ -66,7 +71,7 @@ tsc --init
   outDir: "./dist"
 ```
 
-## 9. go to express for hello world setup
+## 9. Hello World Setup
 
 🔗 Links: https://expressjs.com/en/starter/hello-world.html
 
@@ -164,25 +169,23 @@ DB_NAME = "test-db";
 MONGO_URI: "Put Your MongoDB Database Connection String Here";
 ```
 
-## 10. use common js import syntax
+## 10. Run this command
 
 ```
     npm i --save-dev @types/express
 ```
 
-<===============|| run the project || ===============>
+<=============== || RUN THE PROJECT || ===============>
 
-## 11. run the project
+## 11. RUN THE PROJECT
 
-#> basic way
-
-1. install nodemon if you already installed it dont need to install again.
+1. Install nodemon if you already installed it don't need to install again.
    ```
    npm i -D nodemon
    ```
 2. open two terminal
 
-3. for watching ts file
+3. run this command for watching ts file
 
    ```
    tsc -w
@@ -196,48 +199,53 @@ MONGO_URI: "Put Your MongoDB Database Connection String Here";
 
 <===============|| Another final solution for run the project || ===============>
 
-## 12. run the project wit ts-node-dev
+## 12. Run the project directly with ts-node-dev npm package
 
 🔗 Links https://www.npmjs.com/package/ts-node-dev
 
-2. install
+2. install the package
 
    ```
    npm i ts-node-dev
    ```
 
-3. run your app by this command
+3. now run your app by this command
 
    ```
    ts-node-dev --respawn --transpile-only ./src/server.ts
    ```
 
-## 13. write a script for this big command inside your packege.json file
+## 13. Make a COMMAND: Write a script for this big command inside your package.json file
 
 ```ts
 "start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts"
 
 ```
 
-### Production code run command
+### Make those commands
 
 ```ts
+// Make a build command
+"build":"tsc-- watch"
+```
+
+```ts
+// Write a script for run the production code
 "start:prod": "nodemon ./dist/server.js"
 ```
 
-## 14. create some files and folders like this
+## 14. NOW RUN THE PROJECT
 
-```
-   ├─ src
-   │  ├─ app
-   │  ├─ app.ts
-   │  ├─ config
-   │  │  └─ env.config.ts
-   │  ├─ db
-   │  │  └─ ConnectDB.ts
-   │  └─ server.ts
-   └─ tsconfig.json
-```
+> Run this tow commands
+
+    1.
+      ```ts
+      npm run build
+      ```
+    2.
+      ```ts
+      npm run start:prod
+      ```
 
 ## 15. Setup Typescript Eslint
 
