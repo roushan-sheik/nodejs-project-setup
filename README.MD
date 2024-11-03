@@ -1,6 +1,6 @@
 # Node Js Project Setup
 
-## 1. initialization
+## 1. Initialization
 
 ```
  npm init
@@ -12,36 +12,36 @@
 ./dist/server.js
 ```
 
-## 2. after initialization go to express docs and install
+## 2. After initialization go to express docs and install
 
 ```
     npm i express
 ```
 
-## 3. go to typescript docs and install
+## 3. Go to typescript docs and install
 
 ```
 npm i typescript --save-dev
 ```
 
-## 4. install those packages
+## 4. Install those packages
 
 ```
  npm i cors dotenv mongoose
 
 ```
 
-## 5. create a .gitignore file
+## 5. Create a .gitignore file
 
 ```
 .gitignore
 ```
 
-## 6. go to this website and copy the ignore code
+## 6. Go to this website and copy the ignore code
 
 🔗 Links: https://mrkandreev.name/snippets/gitignore-generator/#Node
 
-## 7. create this files and folders
+## 7. Create this files and folders
 
 ```
 └─ .
@@ -75,7 +75,7 @@ tsc --init
 
 🔗 Links: https://expressjs.com/en/starter/hello-world.html
 
-> app.js
+> src/app.js
 
 ```ts
 import express, { Request, Response } from "express";
@@ -89,7 +89,7 @@ app.get("/", (req: Request, res: Response) => {
 export { app };
 ```
 
-> server.ts
+> src/server.ts
 
 ```ts
 /* eslint-disable no-console */
@@ -111,7 +111,7 @@ ConnectDB()
   });
 ```
 
-> ConnectDB.ts
+> src/db/ConnectDB.ts
 
 ```ts
 /* eslint-disable no-console */
@@ -298,7 +298,7 @@ export default tseslint.config(
     "lint:fix": "npx eslint src --fix",
 ```
 
-## 16. prettier setup. > go to
+## 16. Prettier setup. > go to
 
 🔗 Links:
 https://prettier.io/docs/en/install
