@@ -401,7 +401,7 @@ composer.lock
 
 ```
 
-================>|| Basic Setup done ||<==================
+===================>|| Basic Setup done ||<==================
 
 # Advenced Setup
 
