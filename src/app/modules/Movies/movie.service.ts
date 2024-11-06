@@ -48,7 +48,7 @@ const getAllMovie = async (payload: Record<string, string | unknown>) => {
   }
   const sortedItems = limitQuery.sort(sortBy);
 
-  // field fintering  =========================>
+  // field filtering  =========================>
   let fields = "";
   if (payload?.fields) {
     fields = (payload?.fields as string).split(",").join(" ");
