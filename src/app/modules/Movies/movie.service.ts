@@ -49,7 +49,11 @@ const getAllMovie = async (payload: Record<string, string | unknown>) => {
   const sortedItems = limitQuery.sort(sortBy);
 
   // field fintering  =========================>
-  const fields = (payload?.fields as string).split(",").join(" ") || "";
+  let fields = "";
+  if (payload?.fields) {
+    fields = (payload?.fields as string).split(",").join(" ");
+    //OutputExample: 'title releaseDate'
+  }
   const fieldQuery = sortedItems.select(fields);
 
   //? copied from original payload object
