@@ -41,14 +41,25 @@ const getAllMovie = async (payload: Record<string, string | unknown>) => {
 
   const skipedQuery = searchedMovies.skip(skip);
   const limitQuery = skipedQuery.limit(limit);
+  // Sorting ====================>
+  let sortBy = "-releaseDate";
+  if (payload?.sortBy) {
+    sortBy = payload.sortBy as string;
+  }
+  const sortedItems = limitQuery.sort(sortBy);
 
-  // copied from original payload object
+  // field fintering  =========================>
+  const fields = (payload?.fields as string).split(",").join(" ") || "";
+  const fieldQuery = sortedItems.select(fields);
+
+  //? copied from original payload object
+  // and exclude query before resolve the promise
   const queryObj = { ...payload };
-  const excludeFields = ["searchTerm", "limit", "page"];
-
+  const excludeFields = ["searchTerm", "limit", "page", "sortBy", "fields"];
   excludeFields.forEach((field: string) => delete queryObj[field]);
 
-  const result = await limitQuery.find(queryObj);
+  // now resolve the promise ======================>
+  const result = await fieldQuery.find(queryObj);
 
   return result;
 };
