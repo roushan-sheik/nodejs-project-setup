@@ -18,20 +18,39 @@ const createMovie = async (payload: IMovie) => {
 //? get all movies ========================>
 const getAllMovie = async (payload: Record<string, string | unknown>) => {
   let searchTerm = "";
-  if (payload?.searchTerm) {
+  if (payload.searchTerm) {
     searchTerm = payload.searchTerm as string;
   }
-  const searchableFields = ["title", "genre"];
+  const searchFields = ["title", "genre"];
 
-  const searchMovie = await Movie.find({
-    $or: searchableFields.map((field) => {
+  const searchedMovies = Movie.find({
+    $or: searchFields.map((field: string) => {
       return {
-        [field]: { $regex: searchTerm, $options: "i" },
+        [field]: { $regex: searchTerm, $options: "is" },
       };
     }),
   });
+  // Pagination
+  const limit: number = Number(payload?.limit || 10);
+  let skip: number = 0;
 
-  return searchMovie;
+  if (payload?.page) {
+    const page: number = Number(payload?.page || 1);
+    skip = Number((page - 1) * limit);
+  }
+
+  const skipedQuery = searchedMovies.skip(skip);
+  const limitQuery = skipedQuery.limit(limit);
+
+  // copied from original payload object
+  const queryObj = { ...payload };
+  const excludeFields = ["searchTerm", "limit", "page"];
+
+  excludeFields.forEach((field: string) => delete queryObj[field]);
+
+  const result = await limitQuery.find(queryObj);
+
+  return result;
 };
 //? get movie by id =======================>
 const getMovieById = async (id: string) => {
