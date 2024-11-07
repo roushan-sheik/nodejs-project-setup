@@ -2,6 +2,7 @@ import { IMovie } from "./movie.interface";
 import Movie from "./movie.model";
 // import { format } from "date-fns";
 // import slugify from "slugify";
+import { QueryBuilder } from "./../../builder/QueryBuilder";
 
 // create movie
 const createMovie = async (payload: IMovie) => {
@@ -17,30 +18,12 @@ const createMovie = async (payload: IMovie) => {
 
 //? get all movies ========================>
 const getAllMovie = async (payload: Record<string, string | unknown>) => {
-  let searchTerm = "";
-  if (payload.searchTerm) {
-    searchTerm = payload.searchTerm as string;
-  }
-  const searchFields = ["title", "genre"];
-
-  const searchedMovies = Movie.find({
-    $or: searchFields.map((field: string) => {
-      return {
-        [field]: { $regex: searchTerm, $options: "is" },
-      };
-    }),
-  });
+  const searchedMovies = new QueryBuilder(Movie.find({}), payload).search([
+    "title",
+    "genre",
+  ]);
   // Pagination
-  const limit: number = Number(payload?.limit || 10);
-  let skip: number = 0;
 
-  if (payload?.page) {
-    const page: number = Number(payload?.page || 1);
-    skip = Number((page - 1) * limit);
-  }
-
-  const skipedQuery = searchedMovies.skip(skip);
-  const limitQuery = skipedQuery.limit(limit);
   // Sorting ====================>
   let sortBy = "-releaseDate";
   if (payload?.sortBy) {
