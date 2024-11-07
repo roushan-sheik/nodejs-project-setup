@@ -39,7 +39,23 @@ export class QueryBuilder<T> {
     return this;
   }
   //*   Sorting Method =================================>
-  public sort() {}
+  public sort(sortby: string) {
+    let sortBy = sortby;
+    if (this.query?.sortBy) {
+      sortBy = this.query.sortBy as string;
+    }
+    this.modelQuery = this.modelQuery.sort(sortBy);
+    return this.modelQuery;
+  }
+  //*   Fields Sorting Method =================================>
+  public fields() {
+    let fields = "";
+    if (this.query?.fields) {
+      fields = (this.query?.fields as string).split(",").join(" ");
+      //OutputExample: 'title releaseDate'
+    }
+    this.modelQuery = this.modelQuery.select(fields);
+  }
 }
 
 //  Example: new QueryBuilder(Movie.find({}), query)

@@ -18,26 +18,15 @@ const createMovie = async (payload: IMovie) => {
 
 //? get all movies ========================>
 const getAllMovie = async (payload: Record<string, string | unknown>) => {
-  const searchedMovies = new QueryBuilder(Movie.find({}), payload).search([
-    "title",
-    "genre",
-  ]);
+  const searchedMovies = new QueryBuilder(Movie.find({}), payload)
+    .search(["title", "genre"])
+    .paginate()
+    .sort("-releaseDate");
   // Pagination
 
   // Sorting ====================>
-  let sortBy = "-releaseDate";
-  if (payload?.sortBy) {
-    sortBy = payload.sortBy as string;
-  }
-  const sortedItems = limitQuery.sort(sortBy);
 
   // field filtering  =========================>
-  let fields = "";
-  if (payload?.fields) {
-    fields = (payload?.fields as string).split(",").join(" ");
-    //OutputExample: 'title releaseDate'
-  }
-  const fieldQuery = sortedItems.select(fields);
 
   //* copied from original payload object ================>
   // and exclude query before resolve the promise
