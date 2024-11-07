@@ -39,8 +39,8 @@ export class QueryBuilder<T> {
     return this;
   }
   //*   Sorting Method =================================>
-  public sort(sortby: string) {
-    let sortBy = sortby;
+  public sort() {
+    let sortBy = "";
     if (this.query?.sortBy) {
       sortBy = this.query.sortBy as string;
     }

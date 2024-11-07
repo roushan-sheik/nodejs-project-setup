@@ -21,10 +21,13 @@ const getAllMovie = async (payload: Record<string, string | unknown>) => {
   const searchedMovies = new QueryBuilder(Movie.find({}), payload)
     .search(["title", "genre"])
     .paginate()
-    .sort("-releaseDate")
+    .sort()
+    .fields()
     .filter();
 
-  return searchedMovies;
+  const result = await searchedMovies.modelQuery;
+
+  return result;
 };
 //? get movie by id =======================>
 const getMovieById = async (id: string) => {
