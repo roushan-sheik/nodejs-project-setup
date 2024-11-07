@@ -56,7 +56,7 @@ const getAllMovie = async (payload: Record<string, string | unknown>) => {
   }
   const fieldQuery = sortedItems.select(fields);
 
-  //? copied from original payload object
+  //* copied from original payload object ================>
   // and exclude query before resolve the promise
   const queryObj = { ...payload };
   const excludeFields = ["searchTerm", "limit", "page", "sortBy", "fields"];

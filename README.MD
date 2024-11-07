@@ -403,23 +403,6 @@ composer.lock
 
 =====================>|| Basic Setup done ||<====================
 
-# Advenced Setup
-
-## Huskey and Lint-Staged Setup
-
-> install
-
-```
-npm install lint-staged husky --save-dev
-
-```
-
-> initialization
-
-```
-npx husky init
-```
-
 ## Follow this Moduler pattern
 
 ```
@@ -539,4 +522,63 @@ npm i cross-env
 ```ts
   "start:dev": "cross-env  NODE_ENV=development  ts-node-dev --respawn --transpile-only ./src/server.ts",
     "start:prod": "cross-env NODE_ENV=production nodemon ./dist/server.js",
+```
+
+## Efficient Query
+
+> Basic way
+
+```ts
+//? get all movies ========================>
+const getAllMovie = async (payload: Record<string, string | unknown>) => {
+  let searchTerm = "";
+  if (payload.searchTerm) {
+    searchTerm = payload.searchTerm as string;
+  }
+  const searchFields = ["title", "genre"];
+
+  const searchedMovies = Movie.find({
+    $or: searchFields.map((field: string) => {
+      return {
+        [field]: { $regex: searchTerm, $options: "is" },
+      };
+    }),
+  });
+  // Pagination
+  const limit: number = Number(payload?.limit || 10);
+  let skip: number = 0;
+
+  if (payload?.page) {
+    const page: number = Number(payload?.page || 1);
+    skip = Number((page - 1) * limit);
+  }
+
+  const skipedQuery = searchedMovies.skip(skip);
+  const limitQuery = skipedQuery.limit(limit);
+  // Sorting ====================>
+  let sortBy = "-releaseDate";
+  if (payload?.sortBy) {
+    sortBy = payload.sortBy as string;
+  }
+  const sortedItems = limitQuery.sort(sortBy);
+
+  // field filtering  =========================>
+  let fields = "";
+  if (payload?.fields) {
+    fields = (payload?.fields as string).split(",").join(" ");
+    //OutputExample: 'title releaseDate'
+  }
+  const fieldQuery = sortedItems.select(fields);
+
+  //* copied from original payload object ================>
+  // and exclude query before resolve the promise
+  const queryObj = { ...payload };
+  const excludeFields = ["searchTerm", "limit", "page", "sortBy", "fields"];
+  excludeFields.forEach((field: string) => delete queryObj[field]);
+
+  // now resolve the promise ======================>
+  const result = await fieldQuery.find(queryObj);
+
+  return result;
+};
 ```
