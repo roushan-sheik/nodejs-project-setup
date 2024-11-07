@@ -8,7 +8,7 @@ export class QueryBuilder<T> {
     this.query = query;
     this.modelQuery = modelQuery;
   }
-  //*   search method =================================>
+  //*   Search method =================================>
   public search(searchAbleFields: string[] = ["title"]) {
     let searchTerm = "";
     if (this.query.searchTerm) {
@@ -45,9 +45,9 @@ export class QueryBuilder<T> {
       sortBy = this.query.sortBy as string;
     }
     this.modelQuery = this.modelQuery.sort(sortBy);
-    return this.modelQuery;
+    return this;
   }
-  //*   Fields Sorting Method =================================>
+  //*   Fields Filtering Method =================================>
   public fields() {
     let fields = "";
     if (this.query?.fields) {
@@ -55,6 +55,25 @@ export class QueryBuilder<T> {
       //OutputExample: 'title releaseDate'
     }
     this.modelQuery = this.modelQuery.select(fields);
+    return this;
+  }
+  //*   Filter Method =================================>
+  public filter(excludeField?: string[]) {
+    // copied from original payload object
+    // and exclude query before resolve the promise
+    const queryObj = { ...this.query };
+    const excludeFields = excludeField || [
+      "searchTerm",
+      "limit",
+      "page",
+      "sortBy",
+      "fields",
+    ];
+    excludeFields.forEach((field: string) => delete queryObj[field]);
+
+    // now resolve the promise ======================>
+    this.modelQuery = this.modelQuery.find(queryObj as FilterQuery<T>);
+    return this;
   }
 }
 

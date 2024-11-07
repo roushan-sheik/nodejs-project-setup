@@ -21,23 +21,10 @@ const getAllMovie = async (payload: Record<string, string | unknown>) => {
   const searchedMovies = new QueryBuilder(Movie.find({}), payload)
     .search(["title", "genre"])
     .paginate()
-    .sort("-releaseDate");
-  // Pagination
+    .sort("-releaseDate")
+    .filter();
 
-  // Sorting ====================>
-
-  // field filtering  =========================>
-
-  //* copied from original payload object ================>
-  // and exclude query before resolve the promise
-  const queryObj = { ...payload };
-  const excludeFields = ["searchTerm", "limit", "page", "sortBy", "fields"];
-  excludeFields.forEach((field: string) => delete queryObj[field]);
-
-  // now resolve the promise ======================>
-  const result = await fieldQuery.find(queryObj);
-
-  return result;
+  return searchedMovies;
 };
 //? get movie by id =======================>
 const getMovieById = async (id: string) => {
