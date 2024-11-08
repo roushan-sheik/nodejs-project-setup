@@ -674,7 +674,7 @@ export class QueryBuilder<T> {
 import { QueryBuilder } from "./../../builder/QueryBuilder";
 
 const getAllPosts = async (payload: Record<string, string | unknown>) => {
-  const searchedPosts = new QueryBuilder(Movie.find({}), payload)
+  const searchedPosts = new QueryBuilder(Posts.find({}), payload)
     .search(["title", "description"])
     .paginate()
     .sort()
