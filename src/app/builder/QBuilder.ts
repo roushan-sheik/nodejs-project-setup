@@ -7,6 +7,6 @@ export class QBuilder<T> {
   private readonly DEFAULT_SEARCHABLE_FIELDS = ["title"];
   private readonly EXCLUDE_FIELDS = [""];
 
-  // method
+  // search method
   public search() {}
 }
