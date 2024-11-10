@@ -9,4 +9,7 @@ export class QBuilder<T> {
 
   // search method
   public search() {}
+
+  // pagination method
+  public paginate() {}
 }
