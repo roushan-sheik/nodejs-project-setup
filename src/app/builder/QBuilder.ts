@@ -12,4 +12,7 @@ export class QBuilder<T> {
 
   // pagination method
   public paginate() {}
+
+  // sort method
+  public sort() {}
 }
