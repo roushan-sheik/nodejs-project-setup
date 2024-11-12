@@ -21,4 +21,4 @@ router.route("/:slug/review").post(ReviewController.addReview);
 // router.route("/movies/:slug/review").get(ReviewController.getReviewById);
 // router.route("/movies/:slug/review").get(ReviewController.deleteReview);
 
-export const MovieRoute = router;
+export default router;
