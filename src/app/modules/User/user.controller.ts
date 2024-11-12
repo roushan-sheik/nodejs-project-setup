@@ -7,7 +7,7 @@ import { StatusCodes } from "http-status-codes";
 
 const createAdmin = AsyncHandler(async (req: Request, res: Response) => {
   const payload = req.body;
-  const admin = UserService.createAdminIntoDB(payload);
+  const admin = await UserService.createAdminIntoDB(payload);
   res
     .status(201)
     .json(
