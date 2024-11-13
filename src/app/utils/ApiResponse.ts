@@ -7,7 +7,7 @@ class ApiResponse<T> {
   ) {
     this.statusCode = statusCode;
     this.data = data;
-    this.message = message;
+    this.message = statusCode >= 400 ? "Failed" : message;
     this.success = statusCode < 400;
   }
 }
