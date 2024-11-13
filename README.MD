@@ -633,7 +633,7 @@ export default ApiError;
 // 8. stack
 ```
 
-## Api Response
+## Global Error Obj Maker
 
 > src/app/utils/GlobalErrorObj.ts
 
