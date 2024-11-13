@@ -9,7 +9,6 @@ import handleValidationError from "../errors/handleValidationError";
 import handleCastError from "../errors/handleCastError";
 import { handleDuplicateError } from "../errors";
 import { handleZodError } from "../errors/handleZodError";
-import ApiError from "../utils/ApiError";
 import GlobalErrorObj from "../utils/GlobalErrorObj";
 
 const globalErrorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
