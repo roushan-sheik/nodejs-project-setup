@@ -18,7 +18,22 @@ const createAdmin = AsyncHandler(async (req: Request, res: Response) => {
       )
     );
 });
+// update user
+const updateUser = AsyncHandler(async (req: Request, res: Response) => {
+  const { userId } = req.params;
+  const updatedUser = await UserService.updateUserIntoDB(userId);
+  res
+    .status(201)
+    .json(
+      new ApiResponse(
+        StatusCodes.CREATED,
+        updatedUser,
+        "Admin is created Successfully."
+      )
+    );
+});
 
-export const UserController = {
+export const UserControllers = {
   createAdmin,
+  updateUser,
 };

@@ -11,6 +11,15 @@ const createAdminValidationSchema = z.object({
   }),
 });
 
+const updateUserValidationSchema = z.object({
+  body: z.object({
+    name: z.string().optional(),
+    role: z.nativeEnum(USER_ROLE).default(USER_ROLE.ADMIN).optional(),
+    status: z.nativeEnum(USER_STATUS).default(USER_STATUS.ACTIVE).optional(),
+  }),
+});
+
 export const UserValidation = {
   createAdminValidationSchema,
+  updateUserValidationSchema,
 };

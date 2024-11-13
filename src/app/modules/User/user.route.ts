@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { UserController } from "./user.controller";
+import { UserControllers } from "./user.controller";
 import { UserValidation } from "./user.validation";
 import { zodValidateRequest } from "../../middlewares";
 
@@ -9,7 +9,13 @@ router
   .route("/create-admin")
   .post(
     zodValidateRequest(UserValidation.createAdminValidationSchema),
-    UserController.createAdmin
+    UserControllers.createAdmin
+  );
+router
+  .route("/userId")
+  .put(
+    zodValidateRequest(UserValidation.updateUserValidationSchema),
+    UserControllers.updateUser
   );
 
 export default router;
