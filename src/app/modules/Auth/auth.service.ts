@@ -40,7 +40,7 @@ const LoginUser = async (payload: TLoginUser): Promise<any> => {
     user.password
   );
   if (!passwordMatch) {
-    throw new ApiError(StatusCodes.UNAUTHORIZED, "Unauthorized to access");
+    throw new ApiError(StatusCodes.UNAUTHORIZED, "Invalid email or password");
   }
   //   generate a access token
   const jwtPayload = {

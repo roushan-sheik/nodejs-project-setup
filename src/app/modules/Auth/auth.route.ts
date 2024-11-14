@@ -13,7 +13,7 @@ router
   );
 router
   .route("/login")
-  .put(
+  .post(
     zodValidateRequest(AuthValidation.loginValidationSchema),
     AuthControllers.loginUser
   );
