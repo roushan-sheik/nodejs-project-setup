@@ -1094,6 +1094,8 @@ const getAllMovie = async (payload: Record<string, string | unknown>) => {
 
 ### Final Efficient QueryBuilder Class
 
+> src/app/builder/queryBuilder.ts
+
 ```ts
 import { FilterQuery, Query } from "mongoose";
 
@@ -1197,6 +1199,8 @@ const getAllPosts = async (payload: Record<string, string | unknown>) => {
 ```
 
 ## Auth Middleware
+
+> src/app/middlewares/auth.ts
 
 ```ts
 import AsyncHandler from "./../utils/AsyncHandler";
