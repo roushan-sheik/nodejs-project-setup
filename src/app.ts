@@ -1,8 +1,19 @@
+import cookieParser from "cookie-parser";
+import cors from "cors";
 import express, { Request, Response } from "express";
-import { globalErrorHandler, notFound } from "./app/middlewares";
 
 const app = express();
-app.use(express.json());
+
+// middleware
+const corseOptions = {
+  origin: process.env.CORS_ORIGIN,
+  credentials: true,
+};
+app.use(cors(corseOptions));
+app.use(express.json({ limit: "16kb" }));
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
+app.use(express.static("public"));
+app.use(cookieParser());
 
 // routes
 import MovieRoute from "./app/modules/Movies/movie.route";
@@ -16,7 +27,8 @@ app.use("/api/v1/auth", AuthRoute);
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
 });
-
+// not found middleware and globalErrorHandler
+import { globalErrorHandler, notFound } from "./app/middlewares";
 app.use(notFound);
 app.use(globalErrorHandler);
 
