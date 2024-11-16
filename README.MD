@@ -1203,6 +1203,17 @@ const getAllPosts = async (payload: Record<string, string | unknown>) => {
 > src/app/middlewares/auth.ts
 
 ```ts
+// =================> Steps Algorithms <=====================
+// 1. Extract the token from req.headers.authorization
+// 2. verify token
+// 3. find the user  by email
+// 4. verify token and destructure role and email
+// 5. find the user  by email
+// 6. check user status is Blocked
+// 7. check user role
+// 8. finally check user has access to this route
+// 9. finally let him go call the next function
+
 import AsyncHandler from "./../utils/AsyncHandler";
 import { USER_ROLE, USER_STATUS } from "./../modules/User/user.constant";
 import { NextFunction, Response, Request } from "express";
@@ -1223,7 +1234,7 @@ export const auth = (...permissionRoles: (keyof typeof USER_ROLE)[]) => {
           "You are unauthorized to access this route."
         );
       }
-      // verify token
+      // verify token and destructure role and email
       const verifyToken = jwt.verify(token, config.JWT_ACCESS_SECRET as string);
       const { role, email } = verifyToken as JwtPayload;
       // find the user  by email
