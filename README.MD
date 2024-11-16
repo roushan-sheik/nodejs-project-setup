@@ -1213,7 +1213,9 @@ const getAllPosts = async (payload: Record<string, string | unknown>) => {
 // 7. check user role
 // 8. finally check user has access to this route
 // 9. finally let him go call the next function
+```
 
+```ts
 import AsyncHandler from "./../utils/AsyncHandler";
 import { USER_ROLE, USER_STATUS } from "./../modules/User/user.constant";
 import { NextFunction, Response, Request } from "express";
