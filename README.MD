@@ -449,7 +449,7 @@ export { app };
 
 ```
 
-=====================>|| Basic Setup done ||<====================
+=====================>|| Basic Setup done ||<=====================
 
 ## Follow this Moduler pattern
 
