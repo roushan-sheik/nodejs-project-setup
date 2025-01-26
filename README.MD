@@ -22,6 +22,8 @@
 
 ```
 npm i typescript --save-dev
+npx tsc --init
+
 ```
 
 ## 4. Install those packages
